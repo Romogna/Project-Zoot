@@ -1,0 +1,13 @@
+We will use hololens as our device and our interface will be the improved the operation 
+system by importing its API extra and make additional applicaton to support our softwear 
+and make sure every functions will be there and help the asturantant to do the mission
+without interruption and enhance the spacesuit's refine like gesture helper to help
+the asturant accomplish the eva task.1)Communication 2)Vita will works without the 
+interruption of asturant's mission in the eva
+
+1)coomunication
+
+
+
+hololens ---- os api ---- functions package implement 
+                     ----- additonal sensor
