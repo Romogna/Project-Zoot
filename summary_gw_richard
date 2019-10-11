@@ -67,9 +67,16 @@ https://docs.microsoft.com/en-us/windows/uwp/launch-resume/discover-remote-devic
 
 Testing plan:
 
-We will have balck box test schedule on each step of process the spacesuit vital.
+We will have black box test schedule on each step of process the spacesuit vital.
 We will simulate the green light/yellow light/Red emergency situation to see the jump-up windows.
 We will create two end to test the communication functions
+
+
+bullet points for con ops
+•	Constant communication with ground control / rover
+•	Unobtrusive vitals display reports results in the top left corner 
+•	Vitals are constantly reported, especially before EVA departure 
+•	Interaction with the HMD 
 
 
 
