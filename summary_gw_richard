@@ -1,9 +1,17 @@
-We will use hololens as our device and our interface will be the improved the operation 
+We will use hololens as our interface and our interface will be the improved the operation 
 system by importing its API extra and make additional applicaton to support our softwear 
 and make sure every functions will be there and help the asturantant to do the mission
 without interruption and enhance the spacesuit's refine like gesture helper to help
-the asturant accomplish the eva task.1)Communication 2)Vita will works without the 
-interruption of asturant's mission in the eva
+the asturant accomplish the eva task.
+
+For our implementation we will use the hololens 1. We will create our environment by using the hololens API to modify the existing 
+software which will allow us to create a more convincing simulation. We will also use the hololens API to assist with fine-tuning the astronauts gestures.
+
+
+hololens ---- os api ---- functions package implement 
+                     ----- additonal sensor
+
+1)Communication 
 
 For successful communication between an astronaut and ground control / a vehicle, all 
 parties must take on a client / server role during communication. The astronaut will always act as a server
@@ -12,13 +20,8 @@ since he will be entering an exiting a vehicle for EVA purposes and all other pa
 In order for an astronaut to communicate with an outside party he must receive and accept a request for communication.
 In order to implement this protocol programmatically we will use the sockets library in conjunction with the 
 select library using C#. This will allow for full duplex communication and will also allow for an astronaut to 
-communicate with more than one client.   
+communicate with more than one client.
 
-In order to communicate with the 
-
-1)comunication
-
-
-
-hololens ---- os api ---- functions package implement 
-                     ----- additonal sensor
+2)Vita will works without the 
+interruption of asturant's mission in the eva
+   
