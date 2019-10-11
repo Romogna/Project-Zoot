@@ -22,15 +22,24 @@ hololens(HMD) -- os api --  functions package implement
  ***Handfree:
  https://docs.microsoft.com/en-us/windows/mixed-reality/hands-free
                      
-1)Spacesuit Vita works after setting up in IVA and without the interruption of asturant's mission in the EVA
-   
-We will have a application to set up every meter for vitals.In the iva , to make sure all the level and fan functions 
-is green light so the asturantunt can go for the Eva.
-The application will then monitor spacesuit vitals and it will always display each levels on the top of the
-interface.It will remind the asturant with the small flash reminder windows on the left corner when the level
-or function behaves odd with yellow.Even more when the level or function is emergency situation, it will have a red 
-warning window to require asturant to turn back soon and start the communication function to 
-give the asturant more instruction if needed.
+1)Spacesuit Vital works after setting up in IVA and without the interruption of asturant's mission in the EVA
+
+In order to monitor an astronauts vitals we will create a program that will be unobtrusive to the astronaut and 
+will ensure every vitals are within aspecified range before EVA departure. The program will update in real-time 
+and will report a warning if the atronauts vitals fall below any specified threshold. The astronauts vitals 
+will be displayed based off of a 3 color-coded system. Green represents the astronauts vitals are within a safe 
+range, yellow will serve as a warning to the astronaut, and red will alert the astronaut that
+he is operating within a emergency situation and that they need to return to the rover and establish 
+communications with ground control for further instructions. 
+
+(skip:We will have a application to set up every meter for vitals. In the vitals,to make sure all the level 
+and fan functions is green light so the asturantunt can go for the Eva.
+The application will then monitor spacesuit vitals and it will always display each 
+levels on the top of the interface.It will remind the asturant with the small flash reminder windows 
+on the left corner when the level
+or function behaves odd with yellow. Even more when the level or function is emergency situation, 
+it will have a red warning window to require asturant to turn back soon and start the communication function to 
+give the asturant more instruction if needed.)
 
 
 ***Declare background tasks in the application manifest:
