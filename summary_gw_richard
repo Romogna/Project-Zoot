@@ -14,13 +14,15 @@ hololens ---- os api ---- functions package implement
 1)Communication 
 
 For successful communication between an astronaut and ground control / a vehicle, all 
-parties must take on a client / server role during communication. The astronaut will always act as a server
-since he will be entering an exiting a vehicle for EVA purposes and all other parties will act as a client.
+parties must take on a client / server role during communication.  
+In order for a server to communicate with an outside party he must receive and accept a request for communication. 
+Each acting party will be assigned a unique identifier, or ‘channel which the distant end must know in order to request communication.  
+When a party is not actively communicating with an individual, they will switch to a default mode server mode where they will constantly be 
+listening for a communications request.  
 
-In order for an astronaut to communicate with an outside party he must receive and accept a request for communication.
-In order to implement this protocol programmatically we will use the sockets library in conjunction with the 
-select library using C#. This will allow for full duplex communication and will also allow for an astronaut to 
-communicate with more than one client.
+In order to implement this protocol programmatically we will use the sockets library in conjunction with the select library using C#. 
+This will allow for full duplex communication and will also allow for an astronaut to communicate with more than one client. 
+
 
 2)Vita will works without the 
 interruption of asturant's mission in the eva
