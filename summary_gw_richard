@@ -1,29 +1,53 @@
-We will use hololens as our interface and our interface will be the improved the operation 
+(We will use hololens as our interface and our interface will be the improved the operation 
 system by importing its API extra and make additional applicaton to support our softwear 
 and make sure every functions will be there and help the asturantant to do the mission
 without interruption and enhance the spacesuit's refine like gesture helper to help
-the asturant accomplish the eva task.
+the asturant accomplish the eva task.)
 
-For our implementation we will use the hololens 1. We will create our environment by using the hololens API to modify the existing 
-software which will allow us to create a more convincing simulation. We will also use the hololens API to assist with fine-tuning the astronauts gestures.
+0)Interface
+
+For our implementation we will use the hololens 1. We will create our environment by using the hololens API 
+to modify the existing software which will allow us to create a more convincing simulation. 
+We will also use the hololens API to assist with fine-tuning the astronauts gestures.
 
 
-hololens ---- os api ---- functions package implement 
-                     ----- additonal sensor
+hololens(HMD) -- os api --  functions package implement
+                            (1)spacesuit vitals(2)interaction with port (3)Navigation (4)sampling (5) rovers repair 
+                            (6)general function:camera/lighting/timer
+                         -- additonal sensor/pocket clickers/flash light
+                     
+                     
+1)Spacesuit Vita works after setting up in IVA and without the interruption of asturant's mission in the EVA
+   
+We will have a application to set up every meter for vitals.In the iva , to make sure all the level and fan functions 
+is green light so the asturantunt can go for the Eva.
+The application will then monitor spacesuit vitals and it will always display each levels on the top of the
+interface.It will remind the asturant with the small flash reminder windows on the left corner when the level
+or function behaves odd with yellow.Even more when the level or function is emergency situation, it will have a red 
+warning window to require asturant to turn back soon and start the communication function to 
+give the asturant more instruction if needed.
 
-1)Communication 
+2)Successful communication between an astronaut and ground control without interruption
 
-For successful communication between an astronaut and ground control / a vehicle, all 
+For successful communication between an astronaut and ground control or a vehicle, all 
 parties must take on a client / server role during communication.  
-In order for a server to communicate with an outside party he must receive and accept a request for communication. 
-Each acting party will be assigned a unique identifier, or ‘channel which the distant end must know in order to request communication.  
-When a party is not actively communicating with an individual, they will switch to a default mode server mode where they will constantly be 
+In order for a server to communicate with an outside party he must receive and accept a 
+request for communication. Each acting party will be assigned a unique identifier, or ‘
+channel which the distant end must know in order to request communication.  
+When a party is not actively communicating with an individual, they will switch to a 
+default mode server mode where they will constantly be 
 listening for a communications request.  
 
-In order to implement this protocol programmatically we will use the sockets library in conjunction with the select library using C#. 
-This will allow for full duplex communication and will also allow for an astronaut to communicate with more than one client. 
+In order to implement this protocol programmatically we will use the sockets library in 
+conjunction with the select library using C#. This will allow for full duplex communication 
+and will also allow for an astronaut to communicate with more than one client. 
 
 
-2)Vita will works without the 
-interruption of asturant's mission in the eva
-   
+
+
+
+
+
+
+
+
