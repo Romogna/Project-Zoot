@@ -1,4 +1,4 @@
-(We will use hololens as our interface and our interface will be the improved the operation 
+(Background:can skip We will use hololens as our interface and our interface will be the improved the operation 
 system by importing MR API extra and make additional applicaton to support our softwear 
 and make sure every functions will be there and help the asturantant to do the mission
 without interruption and enhance the spacesuit's refine like gesture helper to help
@@ -22,28 +22,26 @@ hololens(HMD) -- os api --  functions package implement
  ***Handfree:
  https://docs.microsoft.com/en-us/windows/mixed-reality/hands-free
                      
-1)Spacesuit Vital works after setting up in IVA and without the interruption of asturant's mission in the EVA
+1)Spacesuit Vital works after setting up in IVA and "without the interruption" of asturant's mission in the EVA
 
 In order to monitor an astronauts vitals we will create a program that will be unobtrusive to the astronaut and 
-will ensure every vitals are within aspecified range before EVA departure. The program will update in real-time 
-and will report a warning if the atronauts vitals fall below any specified threshold. The astronauts vitals 
-will be displayed based off of a 3 color-coded system. Green represents the astronauts vitals are within a safe 
-range, yellow will serve as a warning to the astronaut, and red will alert the astronaut that
-he is operating within a emergency situation and that they need to return to the rover and establish 
-communications with ground control for further instructions. 
-
-(skip:We will have a application to set up every meter for vitals. In the vitals,to make sure all the level 
-and fan functions is green light so the asturantunt can go for the Eva.
-The application will then monitor spacesuit vitals and it will always display each 
-levels on the top of the interface.It will remind the asturant with the small flash reminder windows 
-on the left corner when the level
-or function behaves odd with yellow. Even more when the level or function is emergency situation, 
-it will have a red warning window to require asturant to turn back soon and start the communication function to 
-give the asturant more instruction if needed.)
+will ensure every vitals("air pressure,o2 level,temperature,fan function,emergency control ") meet aspecified 
+standard (shows Green) in IVA)(before EVA departure).In EVA, the program will update in real-time (monitor) and display 
+them on the top of interface without interruption.
+It will also report a warning if the atronauts vitals fall below any specified threshold. The astronauts vitals 
+will be displayed based off of a 3 color-coded system.It will remind the asturant with the small flash reminder windows 
+on the left corner when the level or function is down with yellow labels. 
+Green represents the astronauts vitals are within a safe range;yellow will serve as a warning to the astronaut
+;red will alert the astronaut thathe/she is operating within a emergency situation and that they need to return 
+to the rover and "establish communications" with ground control for further instructions. It will bubble a red 
+warning window to require asturant to turn back soon and start the communication function to give the asturant 
+more instruction if needed.
 
 
 ***Declare background tasks in the application manifest:
+https://docs.microsoft.com/en-us/windows/mixed-reality/app-model
 https://docs.microsoft.com/en-us/windows/uwp/launch-resume/declare-background-tasks-in-the-application-manifest
+
 
 2)Successful communication between an astronaut and ground control without interruption
 
