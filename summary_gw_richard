@@ -1,8 +1,9 @@
 (We will use hololens as our interface and our interface will be the improved the operation 
-system by importing its API extra and make additional applicaton to support our softwear 
+system by importing MR API extra and make additional applicaton to support our softwear 
 and make sure every functions will be there and help the asturantant to do the mission
 without interruption and enhance the spacesuit's refine like gesture helper to help
 the asturant accomplish the eva task.)
+https://docs.microsoft.com/en-us/windows/mixed-reality/app-model
 
 0)Interface
 
@@ -15,7 +16,9 @@ hololens(HMD) -- os api --  functions package implement
                             (1)spacesuit vitals(2)interaction with port (3)Navigation (4)sampling (5) rovers repair 
                             (6)general function:camera/lighting/timer
                          -- additonal sensor/pocket clickers/flash light
-                     
+                         
+ ***Hardware accessories:
+ https://docs.microsoft.com/en-us/windows/mixed-reality/hardware-accessories
                      
 1)Spacesuit Vita works after setting up in IVA and without the interruption of asturant's mission in the EVA
    
@@ -26,6 +29,10 @@ interface.It will remind the asturant with the small flash reminder windows on t
 or function behaves odd with yellow.Even more when the level or function is emergency situation, it will have a red 
 warning window to require asturant to turn back soon and start the communication function to 
 give the asturant more instruction if needed.
+
+
+***Declare background tasks in the application manifest:
+https://docs.microsoft.com/en-us/windows/uwp/launch-resume/declare-background-tasks-in-the-application-manifest
 
 2)Successful communication between an astronaut and ground control without interruption
 
