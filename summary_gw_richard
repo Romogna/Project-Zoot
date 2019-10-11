@@ -19,6 +19,8 @@ hololens(HMD) -- os api --  functions package implement
                          
  ***Hardware accessories:
  https://docs.microsoft.com/en-us/windows/mixed-reality/hardware-accessories
+ ***Handfree:
+ https://docs.microsoft.com/en-us/windows/mixed-reality/hands-free
                      
 1)Spacesuit Vita works after setting up in IVA and without the interruption of asturant's mission in the EVA
    
@@ -47,7 +49,9 @@ listening for a communications request.
 
 In order to implement this protocol programmatically we will use the sockets library in 
 conjunction with the select library using C#. This will allow for full duplex communication 
-and will also allow for an astronaut to communicate with more than one client. 
+and will also allow for an astronaut to communicate with more than one client.
+
+https://docs.microsoft.com/en-us/windows/uwp/launch-resume/discover-remote-devices
 
 
 
