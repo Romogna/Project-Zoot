@@ -1,0 +1,75 @@
+Goals and Objectives for Spacesuit Vitals Augmented Reality Application
+
+
+Goals: 
+
+The goal for the Spacesuit Vitals Augmented Reality Application is to monitor the latest Spacesuit Vitals information to make sure all the level and function is under control. Additionally, the goal is to make sure the astronaut can have a good system to prepare the vitals ,interact with UIA , keep the eye on all the vitals on EVA, communication with telemetry stream and display the emergency situation if needed. 
+
+
+ Objectives: 
+
+The astronaut will use the Helmet Mounted Display (HMD) as their equipment to monitor the Spacesuit Vital, including air level, oxygen, water/wastewater, battery level, temperature, fan function and emergency address. The App will lead the Astronaut to have a safe environment from the UIA to the EVA that will include:
+
+ 
+ • Interact with a suit port : 
+ 1) Umbilical Interface Assembly (UIA). The UIA is located on one wall of the crew airlock and provides a water supply line, a wastewater return line, and an oxygen supply line.
+ 2) Interface with a Display and Control Unit (DCU) during EVA and suit prep intravehicular   spacesuit prep
+
+• HMD will display information (suit pressure, oxygen level, temperature, water/wastewater level, battery level, fan status…) in an unobstructed way
+
+• Receive data from a telemetry stream on a local network.
+
+• The astronaut will be able to access the status of the spacesuit at any time.
+
+• A caution and warning system must be implemented to inform the astronaut about a spacesuit anomaly.
+
+• Inform Astronaut when to return to a pressurized environment.
+
+
+
+
+
+
+
+
+
+Goals and Objectives for Spacesuit Interface Augmented Reality Application
+
+
+Goals: 
+
+The goal for the Spacesuit Interface Augmented Reality Application is to have a good layout for the usage of other APPs. Additionally, the goal is to make sure the astronaut can have a good flow to prepare and accomplish the EVA mission including sampling, rover repairing, vitals, navigation, communication and lighting adjustment.
+
+
+ Objectives: 
+
+The astronaut will use the Helmet Mounted Display (HMD) as their equipment The Interface will lead the Astronaut to have smooth operating environment like matching gesture to complete the task from UIA to the EVA which will include:
+
+ 
+ • The astronaut will not have had extensive training on any EVA
+
+• Spacesuit and/or communication anomalies can arise at any time
+
+• There will be a latency in communication between the astronaut and mission control
+
+• The astronaut will wear EVA like gloves but no other restrictive garments
+
+• EVA task instructions shall be displayed
+
+• The astronaut will be able to access the status of the spacesuit at any time
+
+•The astronaut shall be able to communicate with ground control at any time
+
+• A caution and warning system will be implemented to inform the astronaut about
+a spacesuit anomaly
+
+• In case of an interruption, the astronaut will be able to continue the task on hand
+seamlessly
+
+• The User interface will not permanently impede the astronaut's ability to perform
+
+• All hand gestures will be operable with EVA gloved hands (like heavy ski
+gloves)
+
+
+
