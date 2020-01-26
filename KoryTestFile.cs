@@ -12,7 +12,7 @@ public class Class1
 		
 		Tri++;
 
-
+		//Comments are Important
 		int equation = Tri*Hex;
         Console.WriteLine(equation);
 
