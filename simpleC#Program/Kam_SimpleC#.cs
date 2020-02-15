@@ -5,28 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace PracticeApp
+namespace Suits_Athena
 {
     class Program
     {
         static void Main(string[] args)
         {
-            float initialPosition = 0;
-            float initialVelocity = 0;
-            float gravityEarth = 9.80665;
-            float timeToGround = 0;
-            float velocityGround = 0;
+            double initialPosition = 0;
+            double initialVelocity = 0;
+            double gravityEarth = -9.80665;
+            double timeToGround = 0;
+            double velocityGround = 0;
 
+            Console.Write("Enter in Initial Position of the object: ");
+            initialPosition = double.Parse(Console.ReadLine());
             Console.Write("Enter in Initial Velocity of the object: ");
-            initialPosition = Console.ReadLine();
-            Console.Write("Enter in Initial Velocity of the object: ");
-            initialVelocity = Console.ReadLine();
+            initialVelocity = double.Parse(Console.ReadLine());
 
             timeToGround = Math.Sqrt(-initialPosition / (0.5 * gravityEarth));
             velocityGround = initialVelocity + (gravityEarth * timeToGround);
 
-            //Console.WriteLine("Velocity at the ground: ", velocityGround," m/s");
-            //Console.WriteLine("Time to hit the ground: ", timeToGround, " seconds");
+            Console.WriteLine("Velocity at the ground: {0} m/s", velocityGround);
+            Console.WriteLine("Time to hit the ground: {0} seconds", timeToGround);
         }
     }
 }
