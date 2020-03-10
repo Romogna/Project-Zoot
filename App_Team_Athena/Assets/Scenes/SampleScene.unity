@@ -148,7 +148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000014305, y: -136.1}
+  m_AnchoredPosition: {x: 200, y: -122.7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109901824
@@ -647,7 +647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -299.35, y: 37}
+  m_AnchoredPosition: {x: -300.2, y: 46.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &885051165
@@ -749,16 +749,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: missey
+    name: Astronaut Name
     instructions:
-    - 'Collect the following samples:
-
-      <"Need to create an option to choose between Rocks or Regolith">'
-    - 'Begin documentation by taking picture of the
-
-      site before disturbiig it.'
-    - Begin Instructions for Rocks or Regolith
-    - FINISHED
+    - 'Collect the Following Sample: Rock'
+    - Take a picture of the site before disturbing it.
+    - Locate the sample
+    - Take a picture of the sample before collecting it
+    - remove the sample from the site
+    - Take several pictures of the sample before placing in a bag
+    - Gather all tools from the site
+    - Take one last picture of the site
+    - Finished
 --- !u!1 &1338158395
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,8 +794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.57499, y: -0.06015}
-  m_SizeDelta: {x: 155.55, y: 218.52}
+  m_AnchoredPosition: {x: 202.01, y: -70.23}
+  m_SizeDelta: {x: 155.97, y: 59.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338158397
 MonoBehaviour:
@@ -827,7 +828,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1338158398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1007,7 +1008,7 @@ RectTransform:
   m_GameObject: {fileID: 1927885516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2925, y: 1.2925, z: 1.2925}
+  m_LocalScale: {x: 1.2914727, y: 1.2925, z: 1.2925}
   m_Children:
   - {fileID: 885051164}
   - {fileID: 2004746150}
@@ -1016,7 +1017,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 517, y: 443.5}
+  m_AnchoredPosition: {x: 516.91, y: 443.5}
   m_SizeDelta: {x: 800, y: 686.2669}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927885518
@@ -1072,12 +1073,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!1 &2004746149
 GameObject:
@@ -1115,7 +1116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -299.35, y: 210.84}
+  m_AnchoredPosition: {x: -500.3, y: 205.6}
   m_SizeDelta: {x: 156.7, y: 218.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004746151

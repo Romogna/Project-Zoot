@@ -43,6 +43,23 @@ public class InstructionsGeologyManager : MonoBehaviour
         dialogueText.text = instruction;
     }
 
+    /*
+    public void DisplayPreviousSentence()
+    {
+        if (instructions.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        else instructions.Count = 4;
+
+        string instruction = instructions() ;
+        //       Debug.Log(instruction);
+        dialogueText.text = instruction;
+    }
+    */
+
     void EndDialogue()
     {
         Debug.Log("End of Conversation");

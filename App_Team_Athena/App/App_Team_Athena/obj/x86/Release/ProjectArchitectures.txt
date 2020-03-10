@@ -1,0 +1,6 @@
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\App_Team_Athena.csproj;x86
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\GeneratedProjects\UWP\Unity.Analytics.DataPrivacy\Unity.Analytics.DataPrivacy.csproj;x86
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\GeneratedProjects\UWP\Unity.Analytics.DataPrivacy\Unity.Analytics.DataPrivacy.csproj;x86
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\GeneratedProjects\UWP\Unity.TextMeshPro\Unity.TextMeshPro.csproj;x86
+C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\GeneratedProjects\UWP\Unity.TextMeshPro\Unity.TextMeshPro.csproj;x86

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class InstructionsGTrigger : MonoBehaviour
 {
-    public InstructionsG dialogue
-        ;
+    public InstructionsG dialogue;
 
     public void TriggerInstructions()
     {

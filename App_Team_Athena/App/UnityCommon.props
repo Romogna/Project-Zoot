@@ -1,0 +1,9 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityWSASolutionName>App_Team_Athena</UnityWSASolutionName>
+        <UnityWSASolutionDir>C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\</UnityProjectDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity\Hub\Editor\2018.4.16f1\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
+    </PropertyGroup>
+</Project>

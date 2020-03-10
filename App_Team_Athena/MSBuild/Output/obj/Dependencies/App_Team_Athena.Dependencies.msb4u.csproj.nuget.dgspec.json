@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\Assets\\App_Team_Athena.Dependencies.msb4u.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\Assets\\App_Team_Athena.Dependencies.msb4u.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\Assets\\App_Team_Athena.Dependencies.msb4u.csproj",
+        "projectName": "App_Team_Athena.Dependencies.msb4u",
+        "projectPath": "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\Assets\\App_Team_Athena.Dependencies.msb4u.csproj",
+        "packagesPath": "C:\\Users\\Who\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\MSBuild\\Output\\obj\\Dependencies\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Who\\Documents\\GitHub\\Project-Zoot\\App_Team_Athena\\Assets\\NuGet.Config",
+          "C:\\Users\\Who\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net46"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/UnityDeveloperTools/MSBuildForUnity/_packaging/UnityDeveloperTools/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net46": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net46": {
+          "dependencies": {
+            "MSBuildForUnity": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "Analyzers",
+              "target": "Package",
+              "version": "[0.9.1-*, 0.9.1]"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
