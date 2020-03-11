@@ -8,6 +8,6 @@ public class InstructionsGTrigger : MonoBehaviour
 
     public void TriggerInstructions()
     {
-        FindObjectOfType<InstructionsGeologyManager>().StartInstructions(dialogue);
+        FindObjectOfType<InstructionsGeologyManager>().fillInstructions(dialogue);
     }
 }

@@ -7,30 +7,50 @@ public class InstructionsGeologyManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public string instruction;
 
     private Queue<string> instructions;
+    private int totalInstructions;
+    private int instructionsLeft;
+    private int i;
 
     void Start()
     {
         instructions = new Queue<string>();
     }
 
-    public void StartInstructions(InstructionsG dialogue)
+    public void fillInstructions(InstructionsG dialogue)
     {
-        Debug.Log("Start " + dialogue.name);
- //       nameText.text = dialogue.name;
-
         instructions.Clear();
 
+        // Fill Que with instructions
         foreach (string instruction in dialogue.instructions)
         {
             instructions.Enqueue(instruction);
         }
+    }
+
+    public void StartInstructions()
+    {
+ //       Debug.Log("Start " + dialogue.name);
+ //       nameText.text = dialogue.name;
+
+        // Clear instructions at the start
+        instructions.Clear();
+
+        // Populate Que with instructions
+        fillInstructions(null);
+
+        // Total Number of instructions in Que
+        i = totalInstructions = instructions.Count;
+        Debug.LogError(i);
 
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence()
+    
+
+public void DisplayNextSentence()
     {
         if (instructions.Count == 0)
         {
@@ -38,27 +58,35 @@ public class InstructionsGeologyManager : MonoBehaviour
         return;
         }
 
-        string instruction = instructions.Dequeue();
-        //       Debug.Log(instruction);
+        instruction = instructions.Dequeue();
+        i--;
+        Debug.Log(i);
+        
         dialogueText.text = instruction;
     }
 
-    /*
-    public void DisplayPreviousSentence()
+  public void DisplayPreviousSentence()
     {
-        if (instructions.Count == 0)
+        fillInstructions(null);
+
+        if (i >= totalInstructions)
         {
-            EndDialogue();
+            i = totalInstructions - 1;
             return;
         }
 
-        else instructions.Count = 4;
+        instructionsLeft = totalInstructions - i;
+               
+        for (int j = 0; j < instructionsLeft; j++ )
+        {
+            instruction = instructions.Dequeue();
+        }
 
-        string instruction = instructions() ;
-        //       Debug.Log(instruction);
+        i++;
+        Debug.Log(i);
         dialogueText.text = instruction;
     }
-    */
+  
 
     void EndDialogue()
     {

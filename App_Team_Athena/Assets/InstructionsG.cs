@@ -5,8 +5,8 @@ using UnityEngine;
  [System.Serializable]
 public class InstructionsG
 {
-    public string name;
-
+ //   public string name;
+    
     [TextArea(3, 10)]
     public string[] instructions;
 }
