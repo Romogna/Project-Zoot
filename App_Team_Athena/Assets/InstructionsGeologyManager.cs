@@ -9,28 +9,17 @@ public class InstructionsGeologyManager : MonoBehaviour
     public Text dialogueText;
     public string instruction;
 
-    private Queue<string> instructions;
+    private ArrayList instructions;
     private int totalInstructions;
     private int instructionsLeft;
     private int i;
 
     void Start()
     {
-        instructions = new Queue<string>();
+        instructions = new ArrayList();
     }
 
-    public void fillInstructions(InstructionsG dialogue)
-    {
-        instructions.Clear();
-
-        // Fill Que with instructions
-        foreach (string instruction in dialogue.instructions)
-        {
-            instructions.Enqueue(instruction);
-        }
-    }
-
-    public void StartInstructions()
+    public void StartInstructions(InstructionsG dialogue)
     {
  //       Debug.Log("Start " + dialogue.name);
  //       nameText.text = dialogue.name;
@@ -38,52 +27,48 @@ public class InstructionsGeologyManager : MonoBehaviour
         // Clear instructions at the start
         instructions.Clear();
 
-        // Populate Que with instructions
-        fillInstructions(null);
+        // Fill Que with instructions
+        foreach (string instruction in dialogue.instructions)
+        {
+            instructions.Add(instruction);
+        }
 
-        // Total Number of instructions in Que
-        i = totalInstructions = instructions.Count;
-        Debug.LogError(i);
+        totalInstructions = instructions.Count;
+        Debug.Log(totalInstructions);
+
+        i = -1;
 
         DisplayNextSentence();
     }
-
-    
-
+        
 public void DisplayNextSentence()
     {
-        if (instructions.Count == 0)
-        {
-        EndDialogue();
-        return;
-        }
-
-        instruction = instructions.Dequeue();
-        i--;
+        i++;
         Debug.Log(i);
-        
+
+        if (instructions.Count <= i)
+        {
+            EndDialogue();
+            return;
+        }
+                
+        instruction = (string)instructions[i];
+                       
         dialogueText.text = instruction;
     }
 
   public void DisplayPreviousSentence()
     {
-        fillInstructions(null);
-
-        if (i >= totalInstructions)
-        {
-            i = totalInstructions - 1;
-            return;
-        }
-
-        instructionsLeft = totalInstructions - i;
-               
-        for (int j = 0; j < instructionsLeft; j++ )
-        {
-            instruction = instructions.Dequeue();
-        }
-
-        i++;
+        i--;
         Debug.Log(i);
+ 
+        if (i < 0)
+        {
+            i = 0;
+        }
+
+        instruction = (string)instructions[i];
+
         dialogueText.text = instruction;
     }
   
