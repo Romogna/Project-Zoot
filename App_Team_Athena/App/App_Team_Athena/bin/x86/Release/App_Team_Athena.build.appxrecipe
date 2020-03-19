@@ -400,6 +400,12 @@
     <AppxPackagedFile Include="C:\Program Files\Unity\Hub\Editor\2018.4.16f1\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityPlayer.winmd">
       <PackagePath>UnityPlayer.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\NuGet.config">
+      <PackagePath>NuGet.config</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\Data\boot.config">
+      <PackagePath>Data\boot.config</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\Resource.res">
       <PackagePath>Resource.res</PackagePath>
     </AppxPackagedFile>
@@ -436,9 +442,6 @@
     <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\Data\boot.config">
-      <PackagePath>Data\boot.config</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Who\Documents\GitHub\Project-Zoot\App_Team_Athena\App\App_Team_Athena\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>

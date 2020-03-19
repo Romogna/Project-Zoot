@@ -11,11 +11,11 @@ public class InstructionsGeologyManager : MonoBehaviour
 
     private ArrayList instructions;
     private int totalInstructions;
-    private int instructionsLeft;
     private int i;
 
     void Start()
     {
+        // Start an array of unknown size
         instructions = new ArrayList();
     }
 
@@ -27,48 +27,58 @@ public class InstructionsGeologyManager : MonoBehaviour
         // Clear instructions at the start
         instructions.Clear();
 
-        // Fill Que with instructions
+        // Fill Array with instructions and establish size
         foreach (string instruction in dialogue.instructions)
         {
             instructions.Add(instruction);
         }
 
+        // used for debugging
         totalInstructions = instructions.Count;
         Debug.Log(totalInstructions);
 
+        // Initialize code count to -1. Because count is set to 0 in DisplayNextSentence method.
         i = -1;
 
+        // Call DisplayNextSentence method
         DisplayNextSentence();
     }
         
 public void DisplayNextSentence()
     {
+        // Increment count by 1
         i++;
         Debug.Log(i);
 
+        // Check if count is greater than array size. If greater, decrement count.
         if (instructions.Count <= i)
         {
-            EndDialogue();
-            return;
+            i = i - 1;
         }
-                
+        
+        // store instruction and change array object to an array string.
         instruction = (string)instructions[i];
                        
+        // Display the instruction
         dialogueText.text = instruction;
     }
 
   public void DisplayPreviousSentence()
     {
+        // Decrement count
         i--;
         Debug.Log(i);
- 
+
+        // Check if count drops below 0. If it does, set it back to 0.
         if (i < 0)
         {
             i = 0;
         }
 
+        // store instruction and change array object to an array string.
         instruction = (string)instructions[i];
 
+        // Display the instruction
         dialogueText.text = instruction;
     }
   

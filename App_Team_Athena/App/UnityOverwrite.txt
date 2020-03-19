@@ -7,7 +7,7 @@
 # Default behavior is to never overwrite files
 App_Team_Athena.sln: modified
 App_Team_Athena\App.cs: 8AF3DE79506EB72D70B4751C0B54D49E
-App_Team_Athena\App_Team_Athena.csproj: A753076802146E23B28C9AC4A407B1B5
+App_Team_Athena\App_Team_Athena.csproj: AF827B1704A5AE0312DEE283106B1CF3
 App_Team_Athena\App_Team_Athena.csproj.user: modified
 App_Team_Athena\AssemblyConverterArgs.txt: E0A666F4875584B539F22D1817673963
 App_Team_Athena\Package.appxmanifest: 345FD12C1949966C94B5FADAB65267CA

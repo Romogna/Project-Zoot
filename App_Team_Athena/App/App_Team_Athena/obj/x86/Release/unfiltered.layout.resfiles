@@ -17,6 +17,7 @@ Data\Resources\unity default resources
 Data\Resources\unity_builtin_extra
 Data\sharedassets0.assets
 Data\sharedassets0.assets.resS
+NuGet.config
 Properties\Default.rd.xml
 Resource.res
 StoreManifest.xml
