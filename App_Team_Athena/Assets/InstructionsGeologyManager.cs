@@ -21,13 +21,13 @@ public class InstructionsGeologyManager : MonoBehaviour
     void Start()
     {
         //Create keywords for keyword recognizer
-        keywords.Add("next", () =>
+        keywords.Add("next page", () =>
         {
             // calls the DisplayNextSentence method
             DisplayNextSentence();
         });
 
-        keywords.Add("back", () =>
+        keywords.Add("back page", () =>
         {
             // calls the DisplayPreviousSentence method
             DisplayPreviousSentence();
