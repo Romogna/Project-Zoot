@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq;                          // needed for voice keyword recognizer
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;
+using UnityEngine.Windows.Speech;           // needed for voice keyword recognizer
 
 public class InstructionsGeologyManager : MonoBehaviour
 {
-//    KeywordRecognizer keywordRecognizer;
-//    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+    KeywordRecognizer keywordRecognizer;
+    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
     public Text nameText;
     public Text dialogueText;
@@ -21,13 +21,34 @@ public class InstructionsGeologyManager : MonoBehaviour
     void Start()
     {
         //Create keywords for keyword recognizer
- //       keywords.Add("activate", () =>
-  //      {
-  //          // action to be performed when this keyword is spoken
-  //      });
+        keywords.Add("next", () =>
+        {
+            // calls the DisplayNextSentence method
+            DisplayNextSentence();
+        });
+
+        keywords.Add("back", () =>
+        {
+            // calls the DisplayPreviousSentence method
+            DisplayPreviousSentence();
+        });
+
+ /*       keywords.Add("", () =>
+        {
+            // action to be performed when this keyword is spoken
+            DisplayPreviousSentence();
+        });
+        */
+        keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+        keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
+
+        // Start keyword rcognizer
+        // Note: keyword recognizer needs to be called immediately after setting up keyword parameters
+        keywordRecognizer.Start();
 
         // Start an array of unknown size
         instructions = new ArrayList();
+              
     }
 
     public void StartInstructions(InstructionsG dialogue)
@@ -66,6 +87,7 @@ public void DisplayNextSentence()
             instructionNumber = instructionNumber - 1;
         }
 
+        // script is for debugging current instruction number
         Debug.Log(instructionNumber);
 
         // store instruction and change array object to an array string.
@@ -86,6 +108,7 @@ public void DisplayNextSentence()
             instructionNumber = 0;
         }
 
+        // script is for debugging current instruction number
         Debug.Log(instructionNumber);
 
         // store instruction and change array object to an array string.
@@ -94,7 +117,17 @@ public void DisplayNextSentence()
         // Display the instruction
         dialogueText.text = instruction;
     }
-  
+
+    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        System.Action keywordAction;
+        // if the keyword recognized is in our dictionary, call that Action.
+        if (keywords.TryGetValue(args.text, out keywordAction))
+        {
+            keywordAction.Invoke();
+        }
+    }
+
 
     void EndDialogue()
     {
