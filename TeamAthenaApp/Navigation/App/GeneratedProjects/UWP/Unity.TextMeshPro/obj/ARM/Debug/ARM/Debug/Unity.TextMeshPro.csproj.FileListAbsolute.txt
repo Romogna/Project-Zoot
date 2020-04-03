@@ -1,0 +1,1 @@
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.TextMeshPro\obj\ARM\Debug\ARM\Debug\Unity.TextMeshPro.csprojAssemblyReference.cache

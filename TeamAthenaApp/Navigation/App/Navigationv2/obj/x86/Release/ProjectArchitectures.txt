@@ -1,0 +1,8 @@
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.Analytics.DataPrivacy\Unity.Analytics.DataPrivacy.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.Analytics.DataPrivacy\Unity.Analytics.DataPrivacy.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.TextMeshPro\Unity.TextMeshPro.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.TextMeshPro\Unity.TextMeshPro.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.XR.WindowsMR\Unity.XR.WindowsMR.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.XR.WindowsMR\Unity.XR.WindowsMR.csproj;x86
+C:\Users\CADD_STUDENT\Navigationv2\App\Navigationv2\Navigationv2.csproj;x86
