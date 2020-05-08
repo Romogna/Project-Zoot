@@ -7,16 +7,18 @@ using UnityEditor;                          // needed for voice dictation recogn
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;           // needed for voice keyword & dictation recognizer
+using TMPro;                                // needed for text mesh pro
 
 public class InstructionsGeologyManager : MonoBehaviour
 {
-// Set up dictation recognition
+
+    // Set up dictation recognition
     private DictationRecognizer dictationRecognizer;
 
     // public variables for dictation recognition
     // Use this string to cache the text currently displayed in the text box.
     //private StringBuilder textSoFar;
-    public Text dictationText;
+    public TextMeshProUGUI dictationText;
 
     // Using an empty string specifies the default microphone.
     /*    private static string deviceName = string.Empty;
@@ -26,19 +28,18 @@ public class InstructionsGeologyManager : MonoBehaviour
 
     // private variables for dictation recognition
     [SerializeField]
-    private Text dictationDisplay;
+    private TextMeshProUGUI dictationDisplay;
 
     // Use this to reset the UI once the Microphone is done recording after it was started.
     private bool hasRecordingStarted;
 
-// Set up phrase recognition
+    // Set up phrase recognition
     KeywordRecognizer keywordRecognizer;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
 
-// public variables for instructions
+    // public variables for instructions
     public InstructionsG dialogue;
-    public Text nameText;
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
     public string instruction;
     public bool IsRunning;
 
@@ -47,13 +48,7 @@ public class InstructionsGeologyManager : MonoBehaviour
     private int totalInstructions;
     private int instructionNumber;
 
-// Initialize dictation recognizer here, but does not start it
-    private void Awake()
-    {
-        
-    }
- 
-// Initialize and start keyword recognition here    
+    // Start is called before the first frame update
     void Start()
     {
         //Create keywords for keyword recognizer
@@ -80,7 +75,7 @@ public class InstructionsGeologyManager : MonoBehaviour
 
         keywords.Add("go to page 6", () =>
         { pageSix();  /* calls the page six method */});
-        
+
         keywords.Add("go to page 7", () =>
         { pageSeven();  /* calls the pageseven method */});
 
@@ -101,20 +96,16 @@ public class InstructionsGeologyManager : MonoBehaviour
         // Start keyword rcognizer
         // Note: keyword recognizer needs to be called immediately after setting up keyword parameters
         keywordRecognizer.Start();
-               
+
         Debug.Log("Keyword recognizer started");
 
         // Start an array of unknown size
         instructions = new ArrayList();
-              
     }
 
-// Start instruction control functions here          
+    // Start instruction control functions here          
     public void StartInstructions(InstructionsG dialogue)
     {
-     //       Debug.Log("Start " + dialogue.name);
-     //       nameText.text = dialogue.name;
-
         // Clear array of previous instructions at the start
         instructions.Clear();
 
@@ -126,7 +117,7 @@ public class InstructionsGeologyManager : MonoBehaviour
 
         // used for debugging
         totalInstructions = instructions.Count;
-        Debug.Log(totalInstructions);
+        Debug.Log("Total Instructions is " + totalInstructions);
 
         // Initialize code count to -1. Because count is set to 0 in DisplayNextSentence method.
         instructionNumber = -1;
@@ -135,256 +126,235 @@ public class InstructionsGeologyManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-// Start Instruction controls here
-        public void DisplayNextSentence()
+    // Start Instruction controls here
+    public void DisplayNextSentence()
+    {
+        // Increment count by 1
+        instructionNumber++;
+
+        // Check if count is greater than array size. If greater, decrement count.
+        if (instructions.Count <= instructionNumber)
         {
-            // Increment count by 1
-            instructionNumber++;
-        
-            // Check if count is greater than array size. If greater, decrement count.
-            if (instructions.Count <= instructionNumber)
-            {
-                instructionNumber = instructionNumber - 1;
-            }
-
-            // script is for debugging current instruction number
-            Debug.Log(instructionNumber);
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-                       
-            // Display the instruction
-            dialogueText.text = instruction;
+            instructionNumber = instructionNumber - 1;
         }
 
-        public void DisplayPreviousSentence()
-        {
-            // Decrement count
-            instructionNumber--;
-        
-            // Check if count drops below 0. If it does, set it back to 0.
-            if (instructionNumber < 0)
-            {
-                instructionNumber = 0;
-            }
+        // script is for debugging current instruction number
+        Debug.Log("In Next Sentence Method, Instruction is " + instructionNumber);
 
-            // script is for debugging current instruction number
-            Debug.Log(instructionNumber);
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
 
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageOne()
-        {
-            // Set instruction page number to 0
-            instructionNumber = 0;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageTwo()
-        {
-            // Set instruction page number to 1
-            instructionNumber = 1;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageThree()
-        {
-            // Set instruction page number to 2
-            instructionNumber = 2;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageFour()
-        {
-            // Set instruction page number to 3
-            instructionNumber = 3;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageFive()
-        {
-            // Set instruction page number to 4
-            instructionNumber = 4;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageSix()
-        {
-            // Set instruction page number to 5
-            instructionNumber = 5;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageSeven()
-        {
-            // Set instruction page number to 6
-            instructionNumber = 6;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void pageEight()
-        {
-            // Set instruction page number to 7
-            instructionNumber = 7;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-
-        public void lastPage()
-        {
-            // Set instruction page number to 8
-            instructionNumber = 8;
-
-            // store instruction and change array object to an array string.
-            instruction = (string)instructions[instructionNumber];
-
-            // Display the instruction
-            dialogueText.text = instruction;
-        }
-    
-// Start Phrase Recognition funtion here
-        private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
-        {
-            System.Action keywordAction;
-            // if the keyword recognized is in our dictionary, call that Action.
-            if (keywords.TryGetValue(args.text, out keywordAction))
-            {
-                keywordAction.Invoke();
-            }
-        }
-
-
-
-    // Start Dictation Recognition functions here
-
-  
-        
-
-
-
-
-/*        private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
-        {
-            Debug.Log("Adding text");
-            dictationDisplay.text += text + "\n";
+        // Display the instruction
+        dialogueText.text = instruction;
     }
 
+    public void DisplayPreviousSentence()
+    {
+        // Decrement count
+        instructionNumber--;
 
-        public void DictationRecognizer_DictationHypothesis(string text)
+        // Check if count drops below 0. If it does, set it back to 0.
+        if (instructionNumber < 0)
         {
-            Debug.Log("Dictation Hypothesis working");
-            dictationDisplay.text = textSoFar.ToString() + " " + text + "...";
+            instructionNumber = 0;
         }
 
-        public void DictationRecognizer_DictationComplete(DictationCompletionCause cause)
+        // script is for debugging current instruction number
+        Debug.Log(instructionNumber);
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageOne()
+    {
+        // Set instruction page number to 0
+        instructionNumber = 0;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageTwo()
+    {
+        // Set instruction page number to 1
+        instructionNumber = 1;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageThree()
+    {
+        // Set instruction page number to 2
+        instructionNumber = 2;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageFour()
+    {
+        // Set instruction page number to 3
+        instructionNumber = 3;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageFive()
+    {
+        // Set instruction page number to 4
+        instructionNumber = 4;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageSix()
+    {
+        // Set instruction page number to 5
+        instructionNumber = 5;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageSeven()
+    {
+        // Set instruction page number to 6
+        instructionNumber = 6;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void pageEight()
+    {
+        // Set instruction page number to 7
+        instructionNumber = 7;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    public void lastPage()
+    {
+        // Set instruction page number to 8
+        instructionNumber = 8;
+
+        // store instruction and change array object to an array string.
+        instruction = (string)instructions[instructionNumber];
+
+        // Display the instruction
+        dialogueText.text = instruction;
+    }
+
+    // Start Phrase Recognition funtion here
+    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        System.Action keywordAction;
+        // if the keyword recognized is in our dictionary, call that Action.
+        if (keywords.TryGetValue(args.text, out keywordAction))
         {
-        Debug.Log("Dictation complete");
-            if (cause == DictationCompletionCause.TimeoutExceeded)
+            keywordAction.Invoke();
+        }
+    }
+             
+
+    public void noteTaking()
+    {
+
+        // stop keyword recognizer to prevent dictation recognition conflict
+        PhraseRecognitionSystem.Shutdown();
+
+        Debug.Log("Shutting down Phrase Recognition");
+
+        dictationRecognizer = new DictationRecognizer();
+
+        dictationRecognizer.InitialSilenceTimeoutSeconds = 6f;
+        dictationRecognizer.AutoSilenceTimeoutSeconds = 6f;
+
+        dictationRecognizer.DictationResult += (string text, ConfidenceLevel confidence) =>
+        {
+            // Displays what the App belives was spoken and displays it in console
+            Debug.LogFormat("Dictation result: {0}", text);
+
+            // Displays what was said to the UI
+            dictationDisplay.text = text;
+        };
+
+        dictationRecognizer.DictationHypothesis += (text) =>
+        {
+            // Displays what the App processed was spoken
+            Debug.LogFormat("Dictation hypothesis: {0}", text);
+        };
+
+        dictationRecognizer.DictationComplete += (completionCause) =>
+        {
+            if (completionCause != DictationCompletionCause.Complete)
             {
-                dictationDisplay.text = "Dictation Off";
+                Debug.LogErrorFormat("Dictation completed unsuccessfully: {0}.", completionCause);
             }
-        }
-    
-        public void DictationRecognizer_DictationError(string error, int hresult)
+            Debug.Log("Dictation complete");
+
+            keywordRestart();
+            
+        };
+
+        dictationRecognizer.DictationError += (error, hresult) =>
         {
-            dictationDisplay.text = error + "\nHRESULT" + hresult;
-        }
-*/
+            Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
+        };
 
-        public void noteTaking()
-        {
+        // Used for debugging to show dictation parameters has been activated.
+        // So, dictation can be used in App.
+        Debug.Log("Initiliazed Dictation Recognizer");
 
-            // stop keyword recognizer to prevent dictation recognition conflict
-            PhraseRecognitionSystem.Shutdown();
+        // Start dictation recogntion
+        dictationRecognizer.Start();
 
-            Debug.Log("Shutting down Phrase Recognition");
+        // Change bool to true for dictation control
+        IsRunning = true;
 
-            dictationRecognizer = new DictationRecognizer();
+        // Used for debugging to show dictation recognizer has started.
+        Debug.Log("Dictation started");
+        
+    }
 
-            dictationRecognizer.DictationResult += (string text, ConfidenceLevel confidence) =>
-            {
-                // Displays what the App belives was spoken and displays it in console
-                Debug.LogFormat("Dictation result: {0}", text);
+    public void keywordRestart()
+    {
+        dictationRecognizer.Stop();
+        dictationRecognizer.Dispose();
+        PhraseRecognitionSystem.Restart();
+        keywordRecognizer.Start();
+    }
 
-                // Displays what was said to the UI
-                dictationDisplay.text = text;
-            };
-
-            dictationRecognizer.DictationHypothesis += (text) =>
-            {
-                // Displays what the App processed was spoken
-                Debug.LogFormat("Dictation hypothesis: {0}", text);                                
-            };
-
-            dictationRecognizer.DictationComplete += (completionCause) =>
-            {
-                if (completionCause != DictationCompletionCause.Complete)
-                    Debug.LogErrorFormat("Dictation completed unsuccessfully: {0}.", completionCause);
-                Debug.Log("Dictation complete");
-            };
-
-            dictationRecognizer.DictationError += (error, hresult) =>
-            {
-                Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
-            };
-
-            // Used for debugging to show dictation parameters has been activated.
-            // So, dictation can be used in App.
-            Debug.Log("Initiliazed Dictation Recognizer");
-               
-            // Start dictation recogntion
-            dictationRecognizer.Start();
-
-            // Change bool to true for dictation control
-            IsRunning = true;
-
-            // Used for debugging to show dictation recognizer has started.
-            Debug.Log("Start dictation");
-
-        }
 }
-
