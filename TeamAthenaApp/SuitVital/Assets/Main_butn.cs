@@ -1,12 +1,22 @@
-﻿//voice from Initial Navigation App form other apps
+﻿/**
+ * File:Main_butn,cs
+ * Date:05/2020
+ * suitvital's code
+ * vioce code from Kam and Emery Initial Navigation App
+ * It will accept voice cpmmand or clicking display button to show
+ * Voice command : "Display"<->"Mini"
+ * 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-// Voice
+//voice code from Kam and Romogna
 using UnityEngine.Windows.Speech;
 using System.Linq;
 using UnityEngine.Networking;
+using System.IO;
 
 
 public class Main_butn : MonoBehaviour
@@ -25,11 +35,8 @@ public class Main_butn : MonoBehaviour
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
     float timeLeft = 30.0f;
    
-
-
     //display text in the panel
     //[SerializeField] Text counttext;
-
     [System.Serializable]
     public class Teleinfo
     {
@@ -83,12 +90,13 @@ public class Main_butn : MonoBehaviour
         //b1text.text = "Sign";
         //connect to database
         //StartCoroutine(GetRequest("http://localhost:3000/api/simulation/state"));
-
+        //TimeSpan ts = TimeSpan.Parse("10:20:30");
+        //double totalSeconds = ts.TotalSeconds;
+        
         // Global Voice Command
         keywords.Add("mini", () =>
         {
             // Call the changeTarget function
-
             Debug.Log("Mini");
             Mini();
 
@@ -97,7 +105,6 @@ public class Main_butn : MonoBehaviour
         keywords.Add("Display", () =>
         {
             // Call the changeTarget function
-
             Debug.Log("Diaplay");
             Display();
 
@@ -110,26 +117,39 @@ public class Main_butn : MonoBehaviour
         // Register a callback for the KeywordRecognizer and start recognizing!
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
+
+
+        
     }
     void Update()
     {
+        //from database
         //StartCoroutine(GetRequest("http://localhost:3000/api/simulation/state"));
-        //60-100
+        //from file
+        string tele_in = File.ReadAllText(Application.dataPath + "/Test_1.json");
+        info = JsonUtility.FromJson<Teleinfo>(tele_in);
+        Debug.Log(info.timer.ToString());
+        counttext.text = tele_in;
+        if (info.heart_bpm < 60 || info.heart_bpm > 100)
+        {
+
+            Debug.Log("Emergency");
+
+            super_but.GetComponent<Image>().color = Color.red;
+            warn_pan.SetActive(false);
+            e_pan.SetActive(true);
 
 
+        }
         if (timeLeft >= -4)
         {
             timeLeft -= Time.deltaTime;
-            Debug.Log(timeLeft);
+            //Debug.Log(timeLeft);
             if (timeLeft < 24)
             {
                 Debug.Log("warning");
                 warn_pan.SetActive(true);
                 super_but.GetComponent<Image>().color = Color.yellow;
-
-
-
-
             }
             if (timeLeft < 10)
             {
@@ -143,7 +163,6 @@ public class Main_butn : MonoBehaviour
         }else {
             e_pan.SetActive(false);
             warn_pan.SetActive(false);
-
         }
 
     }
@@ -151,12 +170,10 @@ public class Main_butn : MonoBehaviour
     {
 
         Text txt = transform.Find("Text").GetComponent<Text>();
-
         if (pan.activeSelf)
         {
             txt.text = "Display";
             pan.SetActive(false);
-
         }
         else
         {
@@ -169,7 +186,6 @@ public class Main_butn : MonoBehaviour
     {
         pan.SetActive(true);
         btext.text = "Mini";
-
     }
 
     public void Mini()
@@ -177,7 +193,6 @@ public class Main_butn : MonoBehaviour
         pan.SetActive(false);
         btext.text = "Display";
     }
-
 
     // Voice commands function
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -190,7 +205,7 @@ public class Main_butn : MonoBehaviour
     }
 
 
-
+    //get touch with database
     IEnumerator GetRequest(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -216,7 +231,6 @@ public class Main_butn : MonoBehaviour
                 //Teleinfo player = JsonConvert.DeserializeObject<Teleinfo>(response);
                 // Teleinfo t = new Teleinfo();
                 //Teleinfo json = new Teleinfo(webRequest.downloadHandler.text);
-                //Teleinfo 
                 info =JsonUtility.FromJson<Teleinfo>(webRequest.downloadHandler.text);
                 Debug.Log(info.timer.ToString());
                 /*if (info.heart_bpm < 60 || info.heart_bpm > 100)
