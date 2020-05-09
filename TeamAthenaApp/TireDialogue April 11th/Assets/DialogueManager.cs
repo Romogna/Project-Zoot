@@ -1,80 +1,89 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;                          // needed for voice keyword recognizer
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows.Speech;           // needed for voice keyword recognizer
+using UnityEngine.Windows.Speech; //keyword recognizer
+using System.Linq;//keyword recognizer
 
 public class DialogueManager : MonoBehaviour
 {
-    KeywordRecognizer keywordRecognizer;
-    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+    KeywordRecognizer keywordRecognizer;//keyword recognizer
+    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();//keyword recognizer
 
     public Text nameText;
     public Text dialogueText;
-    public string instruction;
+    public string sentence; // Emery code but changed instruction to sentence
 
-    private ArrayList instructions;
-    private int totalInstructions;
-    private int instructionNumber;
-
+    //private Queue<string> sentences;
+    private ArrayList sentences; // Emery code but changed instructions to sentences
+    private int totalInstructions; // Emery code
+    private int instructionNumber; // Emery code
+  
     void Start()
     {
-        //Create keywords for keyword recognizer
-        keywords.Add("next page", () =>
+        /*//Create keywords for keyword recognizer
+        keywords.Add("start", () =>
         {
-            // calls the DisplayNextSentence method
+            // action to be performed when this keyword is spoken
+            StartDialogue();
+        });
+        */
+        //Create keywords for keyword recognizer
+        keywords.Add("next", () =>
+        {
+            // action to be performed when this keyword is spoken
             DisplayNextSentence();
         });
-
-        keywords.Add("back page", () =>
+        //Create keywords for keyword recognizer
+        keywords.Add("previous", () =>
         {
-            // calls the DisplayPreviousSentence method
+            // action to be performed when this keyword is spoken
             DisplayPreviousSentence();
         });
 
-        /*       keywords.Add("", () =>
-               {
-                   // action to be performed when this keyword is spoken
-                   DisplayPreviousSentence();
-               });
-               */
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
 
-        // Start keyword rcognizer
-        // Note: keyword recognizer needs to be called immediately after setting up keyword parameters
         keywordRecognizer.Start();
 
+        //sentences = new Queue<string>();
         // Start an array of unknown size
-        instructions = new ArrayList();
+        sentences = new ArrayList();
 
     }
 
-    public void StartInstructions(Instructions dialogue)
+     public void StartDialogue (Dialogue dialogue)
     {
-        //       Debug.Log("Start " + dialogue.name);
-        //       nameText.text = dialogue.name;
+        //nameText.text = dialogue.name;
 
-        // Clear instructions at the start
-        instructions.Clear();
+        sentences.Clear();
 
-        // Fill Array with instructions and establish size
-        foreach (string instruction in dialogue.instructions)
+        foreach(string sentence in dialogue.sentences)
         {
-            instructions.Add(instruction);
-        }
 
+            sentences.Add(sentence);
+        }
         // used for debugging
-        totalInstructions = instructions.Count;
+        totalInstructions = sentences.Count;
         Debug.Log(totalInstructions);
 
         // Initialize code count to -1. Because count is set to 0 in DisplayNextSentence method.
         instructionNumber = -1;
 
-        // Call DisplayNextSentence method
         DisplayNextSentence();
     }
+
+    /*public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0) 
+        {
+            EndDialogue();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        dialogueText.text = sentence;
+    }*/
 
     public void DisplayNextSentence()
     {
@@ -82,7 +91,7 @@ public class DialogueManager : MonoBehaviour
         instructionNumber++;
 
         // Check if count is greater than array size. If greater, decrement count.
-        if (instructions.Count <= instructionNumber)
+        if (sentences.Count <= instructionNumber)
         {
             instructionNumber = instructionNumber - 1;
         }
@@ -91,10 +100,10 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(instructionNumber);
 
         // store instruction and change array object to an array string.
-        instruction = (string)instructions[instructionNumber];
+        sentence = (string)sentences[instructionNumber];
 
         // Display the instruction
-        dialogueText.text = instruction;
+        dialogueText.text = sentence;
     }
 
     public void DisplayPreviousSentence()
@@ -112,10 +121,10 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(instructionNumber);
 
         // store instruction and change array object to an array string.
-        instruction = (string)instructions[instructionNumber];
+        sentence = (string)sentences[instructionNumber];
 
         // Display the instruction
-        dialogueText.text = instruction;
+        dialogueText.text = sentence;
     }
 
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -128,9 +137,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
     void EndDialogue()
     {
-        Debug.Log("End of Conversation");
+        Debug.Log("End of conversation.");
     }
 }
