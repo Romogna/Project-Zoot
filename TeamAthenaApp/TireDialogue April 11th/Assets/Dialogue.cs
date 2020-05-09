@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Dialogue // Dialogue = Emery InstructionsG
+public class Dialogue 
 {
-   // public string name; Emery code
+    public string name;
 
     [TextArea(3, 10)]
-    public string[] sentences; // sentences = Emery "instructions"
+    public string[] sentences;
  
 }
