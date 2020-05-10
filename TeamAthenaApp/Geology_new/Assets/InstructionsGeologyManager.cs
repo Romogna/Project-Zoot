@@ -1,0 +1,452 @@
+﻿using System;
+using System.Text;                          // needed for Stringbuilder
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;                          // needed for voice keyword recognizer
+using UnityEditor;                          // needed for voice dictation recognizer
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Windows.Speech;           // needed for voice keyword & dictation recognizer
+using TMPro;                                // needed for text mesh pro
+
+public class InstructionsGeologyManager : MonoBehaviour
+{
+
+    // Set up dictation recognition
+    private DictationRecognizer dictationRecognizer;
+
+    // used to indicate whether dictation is on or off
+    public TextMeshProUGUI dictationText;
+
+    // Using an empty string specifies the default microphone.
+    /*    private static string deviceName = string.Empty;
+        private int samplingRate;
+        private const int messageLength = 10;
+    */
+
+    // private variables for dictation recognition
+    [SerializeField]
+    private TextMeshProUGUI dictationDisplay;
+
+    // Use this to reset the UI once the Microphone is done recording after it was started.
+    private bool hasRecordingStarted;
+
+    // Set up phrase recognition
+    KeywordRecognizer keywordRecognizer;
+    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+
+    // public variables for instructions
+    public InstructionsG dialogue;
+    public TextMeshProUGUI dialogueText;
+    public string instruction;
+    public bool geologyRunning;
+    public bool IsRunning;
+
+    // private variables for instructions 
+    private ArrayList instructions;
+    private int totalInstructions;
+    private int instructionNumber;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //Create keywords for keyword recognizer
+        keywords.Add("open geology", () =>
+        { TriggerInstructions();  /* calls the DisplayNextSentence method */});
+
+        keywords.Add("next page", () =>
+        { DisplayNextSentence();  /* calls the DisplayNextSentence method */});
+
+        keywords.Add("previous page", () =>
+        { DisplayPreviousSentence();  /* calls the DisplayPreviousSentence method */});
+
+        keywords.Add("start over", () =>
+        { pageOne();  /* calls the page 1 method */});
+
+        keywords.Add("go to page 2", () =>
+        { pageTwo();  /* calls the page two method */});
+
+        keywords.Add("go to page 3", () =>
+        { pageThree();  /* calls the page three method */});
+
+        keywords.Add("go to page 4", () =>
+        { pageFour();  /* calls the page four method */});
+
+        keywords.Add("go to page 5", () =>
+        { pageFive();  /* calls the page five method */});
+
+        keywords.Add("go to page 6", () =>
+        { pageSix();  /* calls the page six method */});
+
+        keywords.Add("go to page 7", () =>
+        { pageSeven();  /* calls the pageseven method */});
+
+        keywords.Add("go to page 8", () =>
+        { pageEight();  /* calls the pageeight method */});
+
+        keywords.Add("last page", () =>
+        { lastPage();  /* calls the lastpage method */});
+
+        keywords.Add("begin note taking", () =>
+        { noteTaking(); /* calls the note taking method */});
+
+        keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+        keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
+
+        Debug.Log("Initiliazed keyword recognizer");
+
+        // Start keyword rcognizer
+        // Note: keyword recognizer needs to be called immediately after setting up keyword parameters
+        keywordRecognizer.Start();
+
+        Debug.Log("Keyword recognizer started");
+
+        // Start an array of unknown size
+        instructions = new ArrayList();
+
+        Debug.Log("Geology running is " + geologyRunning);
+     //   geologyRunning = false;
+    }
+
+    // Start Phrase Recognition funtion here
+    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        System.Action keywordAction;
+        // if the keyword recognized is in our dictionary, call that Action.
+        if (keywords.TryGetValue(args.text, out keywordAction))
+        {
+            keywordAction.Invoke();
+        }
+    }
+
+    // Open Geology App Instructions
+    public void TriggerInstructions()
+    {
+        geologyRunning = true;
+        FindObjectOfType<InstructionsGeologyManager>().startInstructions(dialogue);
+    }
+
+    // Method to load gology Instructions          
+    public void startInstructions(InstructionsG dialogue)
+    {
+        Debug.Log("geologyRunning is " + geologyRunning);
+
+        // Clear array of previous instructions at the start
+        instructions.Clear();
+
+        // Fill Array with instructions and establish size
+        foreach (string instruction in dialogue.instructions)
+        {
+            instructions.Add(instruction);
+        }
+
+        // used for debugging
+        totalInstructions = instructions.Count;
+        Debug.Log("Total Instructions is " + totalInstructions);
+
+        // Initialize code count to -1. Because count is set to 0 in DisplayNextSentence method.
+        instructionNumber = -1;
+
+        // Call DisplayNextSentence method
+        DisplayNextSentence();
+    }
+
+    // Start Instruction button controls here
+    public void DisplayNextSentence()
+    {
+        if (geologyRunning)
+        {
+            // Increment count by 1
+            instructionNumber++;
+
+            // Check if count is greater than array size. If greater, decrement count.
+            if (instructions.Count <= instructionNumber)
+            {
+                instructionNumber = instructionNumber - 1;
+            }
+
+            // script is for debugging current instruction number
+            Debug.Log("In Next Sentence Method, Instruction is " + instructionNumber);
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void DisplayPreviousSentence()
+    {
+        if (geologyRunning)
+        {
+            // Decrement count
+            instructionNumber--;
+
+            // Check if count drops below 0. If it does, set it back to 0.
+            if (instructionNumber < 0)
+            {
+                instructionNumber = 0;
+            }
+
+            // script is for debugging current instruction number
+            Debug.Log(instructionNumber);
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    // Start Instruction keyword control here
+    public void pageOne()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 0
+            instructionNumber = 0;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageTwo()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 1
+            instructionNumber = 1;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageThree()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 2
+            instructionNumber = 2;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageFour()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 3
+            instructionNumber = 3;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageFive()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 4
+            instructionNumber = 4;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageSix()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 5
+            instructionNumber = 5;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageSeven()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 6
+            instructionNumber = 6;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void pageEight()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 7
+            instructionNumber = 7;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    public void lastPage()
+    {
+        if (geologyRunning)
+        {
+            // Set instruction page number to 8
+            instructionNumber = 8;
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = instruction;
+        }
+    }
+
+    /// <summary> ############################################################
+    /// ---------------------  Dictation Methods below  ----------------------
+    /// </summary> ###########################################################
+    public void noteTaking()
+    {
+        // stop keyword recognizer to prevent dictation recognition conflict
+        PhraseRecognitionSystem.Shutdown();
+
+        Debug.Log("Shutting down Phrase Recognition");
+
+        dictationRecognizer = new DictationRecognizer();
+
+        dictationRecognizer.InitialSilenceTimeoutSeconds = 6f;
+        dictationRecognizer.AutoSilenceTimeoutSeconds = 6f;
+
+        dictationRecognizer.DictationResult += dictationRecognizer_DictationResult;
+        dictationRecognizer.DictationHypothesis += dictationRecognizer_DictationHypothesis;
+        dictationRecognizer.DictationComplete += dictationRecognizer_DictationComplete;
+        dictationRecognizer.DictationError += dictationRecognizer_DictationError;
+
+        // Used for debugging to show dictation parameters has been activated.
+        // So, dictation can be used in App.
+        Debug.Log("Initiliazed Dictation Recognizer");
+
+        // Start dictation recogntion
+        dictationRecognizer.Start();
+
+        // Change bool to true for dictation control
+        IsRunning = true;
+
+        checkDictationOn();
+
+        // Used for debugging to show dictation recognizer has started.
+        Debug.Log("Dictation started");
+
+    }
+
+    private void dictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
+    {
+        // Displays what the App belives was spoken and displays it in console
+        Debug.LogFormat("Dictation result: {0}", text);
+
+        // Displays what was said to the UI
+        dictationDisplay.text = text;
+    }
+
+    void dictationRecognizer_DictationHypothesis(string text)
+    {
+        // Displays what the App processed was spoken
+        Debug.LogFormat("Dictation hypothesis: {0}", text);
+    }
+
+    void dictationRecognizer_DictationComplete(DictationCompletionCause completionCause)
+    {
+        if (completionCause != DictationCompletionCause.Complete)
+        {
+            Debug.LogErrorFormat("Dictation completed unsuccessfully: {0}.", completionCause);
+        }
+        Debug.Log("Dictation complete");
+
+        dictationDisplay.text = "";
+
+        keywordRestart();
+    }
+
+    void dictationRecognizer_DictationError(string error, int hresult)
+    {
+        Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
+    }
+
+    public void keywordRestart()
+    {
+        dictationRecognizer.Stop();
+        dictationRecognizer.Dispose();
+        IsRunning = false;
+        checkDictationOn();
+        PhraseRecognitionSystem.Restart();
+        keywordRecognizer.Start();
+    }
+
+    public void checkDictationOn()
+    {
+        if (IsRunning)
+        {
+            dictationListening();
+        }
+        else
+            dictationOff();
+    }
+
+    private void dictationListening()
+    {
+        var listeningTexture = (Texture2D)Resources.Load("listening");
+        Debug.Log("Dictation Listening On");
+        this.dictationText.text = "Dictation ON";
+    }
+
+    private void dictationOff()
+    {
+        var listeningTexture = (Texture2D)Resources.Load("off");
+        Debug.Log("Dictation Off");
+        this.dictationText.text = "";
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Manage()
+    {
+    
+    }
+}
+
+
