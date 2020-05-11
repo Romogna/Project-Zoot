@@ -7,8 +7,23 @@ https://docs.unity3d.com/ScriptReference/JsonUtility.ToJson.html
 https://docs.unity3d.com/ScriptReference/JsonUtility.ToJson.html
 https://stackoverflow.com/questions/41122383/convert-a-string-to-json-object
 https://randompoison.github.io/posts/unity-async/
+
+
 https://docs.unity3d.com/ScriptReference/Camera-targetTexture.html
+https://docs.microsoft.com/en-us/windows/mixed-reality/locatable-camera-in-unityhttps://docs.unity3d.com/560/Documentation/ScriptReference/VR.WSA.WebCam.PhotoCapture.TakePhotoAsync.html
+https://forum.unity.com/threads/hololens-photo-capturing-failing.544081/
 https://stackoverflow.com/questions/43531196/how-to-apply-render-textureas-target-texture-on-instantiated-camera
+https://docs.unity3d.com/ScriptReference/Windows.WebCam.PhotoCapture.TakePhotoAsync.html
+
 
 https://stackoverflow.com/questions/54954535/photocapture-in-unity-hololens-emulator-taking-weird-photos
 https://github.com/MicrosoftDocs/windows-itpro-docs/blob/public/devices/hololens/holographic-photos-and-videos.md
+http://www.appzinside.com/2018/08/06/hololens-and-unity-tip-004-storing-and-retrieving-data-on-hololens-device-storage/
+
+https://forums.hololens.com/discussion/2230/does-the-hololens-emulator-store-persistent-data
+https://stackoverflow.com/questions/682039/how-do-i-convert-hhmmss-into-just-seconds-using-c-net
+https://stackoverflow.com/questions/50147653/datetime-parseexact-throws-a-string-format-error-unity3d
+https://answers.unity.com/questions/25614/how-do-i-format-a-string-into-daysminuteshoursseco.html
+
+https://answers.unity.com/questions/25614/how-do-i-format-a-string-into-daysminuteshoursseco.html
+
