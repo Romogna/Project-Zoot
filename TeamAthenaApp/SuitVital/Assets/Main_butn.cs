@@ -29,19 +29,31 @@ public class Main_butn : MonoBehaviour
     public Text b1text;
     Teleinfo info;
     public Text counttext;
+    public Text time_text;
+    public Text bat_text;
+    public Text o2_text;
+    public Text h20_text;
+    public Text temp_text;
+    public Text subp_text;
+    public Text heart_text;
+    public Text fan_text;
     //Text txt = transform.Find("Text").GetComponent<Text>();
     // Speech
     KeywordRecognizer keywordRecognizer = null;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
-    float timeLeft = 30.0f;
-   
+    float timeLeft = 50.0f;
+    //for local test
+    float battimeLeft = 4*60;
+    float o2timeLeft = 6*60;
+    float h20imeLeft = 6*60;
+    float evatime = 0;
     //display text in the panel
     //[SerializeField] Text counttext;
     [System.Serializable]
     public class Teleinfo
     {
         public string _id;
-        public int time;
+        public double time;
         public string timer;
         public string started_at;
         public int heart_bpm;
@@ -126,11 +138,63 @@ public class Main_butn : MonoBehaviour
         //from database
         //StartCoroutine(GetRequest("http://localhost:3000/api/simulation/state"));
         //from file
-        string tele_in = File.ReadAllText(Application.dataPath + "/Test_1.json");
-        info = JsonUtility.FromJson<Teleinfo>(tele_in);
-        Debug.Log(info.timer.ToString());
-        counttext.text = tele_in;
-        if (info.heart_bpm < 60 || info.heart_bpm > 100)
+        //string path = string.Format("{0}/mydata/{1}.json", Application.persistentDataPath, filename);
+
+        o2timeLeft -= Time.deltaTime;
+        h20imeLeft -= Time.deltaTime;
+        battimeLeft -= Time.deltaTime;
+        evatime += Time.deltaTime;
+        
+        //Application.dataPath
+        //Application.persistentDataPath
+        //string tele_in = File.ReadAllText(Application.dataPath + "/Test_1.json");
+        //info = JsonUtility.FromJson<Teleinfo>(tele_in);
+        //Debug.Log(info.timer.ToString());
+        Teleinfo t = new Teleinfo();
+        t._id = "5eb45106a2e9745e38d1d8c6";
+        t.time = 8525.543000000038;
+        t.timer="02:22:05";
+        t.started_at= "2020-05-07T18:18:46.191Z";
+        t.heart_bpm=90;
+        t.p_sub="3.93";
+        t.p_suit= "3.95";
+        t.t_sub= "31.7";
+        t.v_fan= "39986";
+        t.p_o2= "775.02";
+        t.rate_o2= "0.6";
+        t.batteryPercent=40.79484027777724;
+        t.battery_out = 40;
+        t.cap_battery = 29;
+        t.t_battery="01:37:54";
+        t.p_h2o_g= "15.18";
+        t.p_h2o_l= "15.89";
+        t.p_sop="882";
+        t.rate_sop= "1.0";
+        t.t_oxygenPrimary = "21.05978703703501";
+        t.t_oxygenSec="100";
+        t.ox_primary= "21";
+        t.ox_secondary= "100";
+        t.t_oxygen="03:37:54";
+        t.cap_water= 56.94170202020222;
+        t.t_water="03:07:54";
+        t.__v= 0;
+        //counttext.text = tele_in;
+        string tjson = JsonUtility.ToJson(t);
+        Debug.Log(tjson.ToString());
+        counttext.text = tjson.ToString();
+       // time_text.text="EVA time: "+t.timer.ToString();
+        time_text.text = "EVA time:     " + System.TimeSpan.FromSeconds(evatime).ToString();
+        //bat_text.text = "Battery left: " + t.t_battery.ToString();
+        bat_text.text =  "Battery left: " + System.TimeSpan.FromSeconds(battimeLeft).ToString();
+        //o2_text.text = "02 left: " + t.t_oxygen.ToString();
+        o2_text.text =   "02 left:       " + System.TimeSpan.FromSeconds(o2timeLeft).ToString();
+        // h20_text.text = "H20 left: " + t.t_oxygen.ToString();
+        h20_text.text =  "H20 left:      " + System.TimeSpan.FromSeconds(h20imeLeft).ToString();
+        temp_text.text = "Temp:" + t.t_sub+"F";
+        subp_text.text = "Press:" + t.p_sub+"psia";
+        heart_text.text = "Heart:" + t.heart_bpm+"bmp";
+        fan_text.text = "Fan:" + t.v_fan + "rpm";
+        if (t.heart_bpm < 60 || t.heart_bpm > 100)
         {
 
             Debug.Log("Emergency");
@@ -233,17 +297,7 @@ public class Main_butn : MonoBehaviour
                 //Teleinfo json = new Teleinfo(webRequest.downloadHandler.text);
                 info =JsonUtility.FromJson<Teleinfo>(webRequest.downloadHandler.text);
                 Debug.Log(info.timer.ToString());
-                /*if (info.heart_bpm < 60 || info.heart_bpm > 100)
-                {
-
-                    Debug.Log("Emergency");
-
-                    super_but.GetComponent<Image>().color = Color.red;
-                    warn_pan.SetActive(false);
-                    e_pan.SetActive(true);
-
-
-                }*/
+               
             }
         }
     }
