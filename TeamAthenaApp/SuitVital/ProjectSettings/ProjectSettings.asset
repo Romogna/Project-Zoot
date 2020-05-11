@@ -594,12 +594,12 @@ PlayerSettings:
       OfflineMapsManagement: False
       PhoneCall: True
       PhoneCallHistoryPublic: False
-      PicturesLibrary: False
+      PicturesLibrary: True
       PointOfService: False
-      PrivateNetworkClientServer: False
+      PrivateNetworkClientServer: True
       Proximity: False
       RecordedCallsFolder: False
-      RemoteSystem: False
+      RemoteSystem: True
       RemovableStorage: False
       SharedUserCertificates: False
       SpatialPerception: False
