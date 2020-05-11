@@ -137,6 +137,9 @@ public class Main_butn : MonoBehaviour
     {
         //from database
         //StartCoroutine(GetRequest("http://localhost:3000/api/simulation/state"));
+        //StartCoroutine(GetRequest("http://gooabcgle.com"));
+       // StartCoroutine(GetRequest(" http://192.168.2.2:3000/api/simulation/state"));
+       
         //from file
         //string path = string.Format("{0}/mydata/{1}.json", Application.persistentDataPath, filename);
 
@@ -147,7 +150,7 @@ public class Main_butn : MonoBehaviour
         
         //Application.dataPath
         //Application.persistentDataPath
-        //string tele_in = File.ReadAllText(Application.dataPath + "/Test_1.json");
+        //string tele_in = File.ReadAllText(Application.persistentDataPath + "/Test_1.json");
         //info = JsonUtility.FromJson<Teleinfo>(tele_in);
         //Debug.Log(info.timer.ToString());
         Teleinfo t = new Teleinfo();
@@ -194,7 +197,7 @@ public class Main_butn : MonoBehaviour
         subp_text.text = "Press:" + t.p_sub+"psia";
         heart_text.text = "Heart:" + t.heart_bpm+"bmp";
         fan_text.text = "Fan:" + t.v_fan + "rpm";
-        if (t.heart_bpm < 60 || t.heart_bpm > 100)
+        if (t.heart_bpm < 60 || t.heart_bpm > 100 || System.Convert.ToInt32(t.v_fan)<10000)
         {
 
             Debug.Log("Emergency");
@@ -297,7 +300,18 @@ public class Main_butn : MonoBehaviour
                 //Teleinfo json = new Teleinfo(webRequest.downloadHandler.text);
                 info =JsonUtility.FromJson<Teleinfo>(webRequest.downloadHandler.text);
                 Debug.Log(info.timer.ToString());
-               
+                if (info.heart_bpm < 60 || info.heart_bpm > 100 || System.Convert.ToInt32(info.v_fan) < 10000)
+                {
+
+                    Debug.Log("Emergency");
+
+                    super_but.GetComponent<Image>().color = Color.red;
+                    warn_pan.SetActive(false);
+                    e_pan.SetActive(true);
+
+
+                }
+
             }
         }
     }
