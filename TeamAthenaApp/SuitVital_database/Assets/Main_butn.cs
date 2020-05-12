@@ -21,6 +21,7 @@ using System.IO;
 
 public class Main_butn : MonoBehaviour
 {
+    public GameObject color_bt;
     public GameObject pan;
     public GameObject warn_pan;
     public GameObject e_pan;
@@ -41,12 +42,15 @@ public class Main_butn : MonoBehaviour
     // Speech
     KeywordRecognizer keywordRecognizer = null;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
-    float timeLeft = 100.0f;
+
+    /*
+     * float timeLeft = 100.0f;
     //for local test
     float battimeLeft = 4*60;
     float o2timeLeft = 6*60;
     float h20imeLeft = 6*60;
     float evatime = 0;
+    */
     //display text in the panel
     //[SerializeField] Text counttext;
     [System.Serializable]
@@ -142,7 +146,7 @@ public class Main_butn : MonoBehaviour
        
         //from file
         //string path = string.Format("{0}/mydata/{1}.json", Application.persistentDataPath, filename);
-
+        /*
         o2timeLeft -= Time.deltaTime;
         h20imeLeft -= Time.deltaTime;
         battimeLeft -= Time.deltaTime;
@@ -153,7 +157,7 @@ public class Main_butn : MonoBehaviour
         //string tele_in = File.ReadAllText(Application.persistentDataPath + "/Test_1.json");
         //info = JsonUtility.FromJson<Teleinfo>(tele_in);
         //Debug.Log(info.timer.ToString());
-        /*
+        
         Teleinfo t = new Teleinfo();
         t._id = "5eb45106a2e9745e38d1d8c6";
         t.time = 8525.543000000038;
@@ -320,6 +324,7 @@ public class Main_butn : MonoBehaviour
                     Debug.Log("Emergency");
 
                     super_but.GetComponent<Image>().color = Color.red;
+                    color_bt.GetComponent<Image>().color= Color.red;
                     warn_pan.SetActive(false);
                     e_pan.SetActive(true);
 
@@ -332,6 +337,7 @@ public class Main_butn : MonoBehaviour
                     Debug.Log("Warning");
 
                     super_but.GetComponent<Image>().color = Color.yellow;
+                    color_bt.GetComponent<Image>().color = Color.yellow;
                     warn_pan.SetActive(true);
                     e_pan.SetActive(false);
 
@@ -339,6 +345,8 @@ public class Main_butn : MonoBehaviour
                 else { 
 
                     super_but.GetComponent<Image>().color = Color.green;
+                    //Color c = new Color32(19, 210, 241, 255);
+                    color_bt.GetComponent<Image>().color = Color.blue;
                     warn_pan.SetActive(false);
                     e_pan.SetActive(false);
                 }
