@@ -1,1 +1,10 @@
+Instructions
 
+    In the HoloToolkit\Input\Prefabs folder, find the InputManager asset.
+    Drag and drop the InputManager onto the Hierarchy.
+    In the HoloToolkit\Input\Prefabs folder, find the Cursor asset.
+    Drag and drop the Cursor onto the Hierarchy.
+    Select the InputManager object in the Hierarchy.
+    Drag the Cursor object from the Hierarchy into the InputManager's SimpleSinglePointerSelector's Cursor field, at the bottom of the Inspector.
+
+https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-210
