@@ -1,3 +1,8 @@
+
+overwrite holotoolkit using https://github.com/microsoft/HolographicAcademy/tree/Holograms-210-Gaze/Completed/ModelExplorer/Assets/HoloToolkit
+
+
+
 Instructions
 
     In the HoloToolkit\Input\Prefabs folder, find the InputManager asset.
@@ -6,5 +11,5 @@ Instructions
     Drag and drop the Cursor onto the Hierarchy.
     Select the InputManager object in the Hierarchy.
     Drag the Cursor object from the Hierarchy into the InputManager's SimpleSinglePointerSelector's Cursor field, at the bottom of the Inspector.
-overwrite holotoolkit using https://github.com/microsoft/HolographicAcademy/tree/Holograms-210-Gaze/Completed/ModelExplorer/Assets/HoloToolkit
+
 https://docs.microsoft.com/en-us/windows/mixed-reality/holograms-210
