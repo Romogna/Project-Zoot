@@ -1,2 +1,3 @@
+With database without cursor
 This version connect to our own online database http://45.37.165.34:3000/api/simulation/state
 host by Richard and frontend and backend provided by nasa spacesuit project
