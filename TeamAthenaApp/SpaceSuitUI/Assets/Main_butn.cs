@@ -1,6 +1,7 @@
 ﻿/**
  * File:Main_butn,cs
  * Date:05/2020
+ * By Richard and guan 
  * suitvital's code
  * vioce code from Kam and Emery Initial Navigation App
  * It will accept voice cpmmand or clicking display button to show
