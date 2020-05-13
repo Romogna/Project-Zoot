@@ -1,4 +1,7 @@
-﻿using System.Collections;
+/**
+SuitVital by Guan and Richard 
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
