@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
@@ -7,7 +6,8 @@ using System.Linq;
 using UnityEngine.XR.WSA.WebCam;
 using UnityEngine.UI;
 using System.IO;
-
+//voice code from Kam and Romogna
+using UnityEngine.Windows.Speech;
 
 
 public class b1 : MonoBehaviour
@@ -20,6 +20,41 @@ public class b1 : MonoBehaviour
     int maxphoto = 50;
     GameObject quad = null;
     // Use this for initialization
+    KeywordRecognizer keywordRecognizer = null;
+    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+    void Start()
+    {
+
+        // Global Voice Command
+        keywords.Add("cam", () =>
+        {
+            // Call the changeTarget function
+            Debug.Log("cam");
+            OpenCam();
+
+        });
+
+
+
+        // Tell the KeywordRecognizer about our keywords.
+        keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+
+        // Register a callback for the KeywordRecognizer and start recognizing!
+        keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
+        keywordRecognizer.Start();
+
+
+
+    }
+    // Voice commands function
+    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        System.Action keywordAction;
+        if (keywords.TryGetValue(args.text, out keywordAction))
+        {
+            keywordAction.Invoke();
+        }
+    }
     public void Start1()
     {
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
@@ -77,7 +112,7 @@ public class b1 : MonoBehaviour
         quadRenderer.material = new Material(Shader.Find("Unlit/Texture"));
 
         quad.transform.parent = this.transform;
-        quad.transform.localPosition = new Vector3(38.0f, 0.0f, 3.0f);
+        quad.transform.localPosition = new Vector3(100.0f, 0.0f, 3.0f);
 
         quadRenderer.material.SetTexture("_MainTex", targetTexture);
 
@@ -101,7 +136,7 @@ public class b1 : MonoBehaviour
     {
 
         Start1();
-        photoCaptureObject = null;
+        //photoCaptureObject = null;
 
     }
 

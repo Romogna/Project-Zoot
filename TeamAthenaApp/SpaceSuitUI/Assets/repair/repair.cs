@@ -1,8 +1,10 @@
 ﻿/***
- Basic UIA btn control
+ Basic repair btn control
  Date 2020
  Author Gw,Richard
+ Voice Cited from API from Kam ,Romogna and Kory
  */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
@@ -14,7 +16,8 @@ using System.IO;
 //voice code from Kam and Romogna
 using UnityEngine.Windows.Speech;
 
-public class UIA : MonoBehaviour
+
+public class repair : MonoBehaviour
 {
     public GameObject pan;
     public Text btext;
@@ -25,17 +28,17 @@ public class UIA : MonoBehaviour
     {
 
         // Global Voice Command
-        keywords.Add("UIA", () =>
+        keywords.Add("repair", () =>
         {
             // Call the changeTarget function
-            Debug.Log("UIA");
+            Debug.Log("repair");
             OpenS();
 
         });
-        keywords.Add("Exit", () =>
+        keywords.Add("Done", () =>
         {
             // Call the changeTarget function
-            Debug.Log("Exit");
+            Debug.Log("done");
             OpenS();
 
         });
@@ -65,12 +68,12 @@ public class UIA : MonoBehaviour
     {
         if (pan.activeSelf)
         {
-            btext.text = "UIA";
+            btext.text = "Repair";
             pan.SetActive(false);
         }
         else
         {
-            btext.text = "Exit";
+            btext.text = "Done";
             pan.SetActive(true);
         }
     }

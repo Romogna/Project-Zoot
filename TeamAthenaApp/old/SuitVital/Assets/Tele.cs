@@ -1,9 +1,4 @@
-﻿/***
- Basic UIA btn control
- Date 2020
- Author Gw,Richard
- */
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
@@ -14,7 +9,7 @@ using System.IO;
 //voice code from Kam and Romogna
 using UnityEngine.Windows.Speech;
 
-public class UIA : MonoBehaviour
+public class Tele : MonoBehaviour
 {
     public GameObject pan;
     public Text btext;
@@ -25,17 +20,17 @@ public class UIA : MonoBehaviour
     {
 
         // Global Voice Command
-        keywords.Add("UIA", () =>
+        keywords.Add("stream", () =>
         {
             // Call the changeTarget function
-            Debug.Log("UIA");
+            Debug.Log("Stream");
             OpenS();
 
         });
-        keywords.Add("Exit", () =>
+        keywords.Add("close", () =>
         {
             // Call the changeTarget function
-            Debug.Log("Exit");
+            Debug.Log("Close");
             OpenS();
 
         });
@@ -61,17 +56,17 @@ public class UIA : MonoBehaviour
         }
     }
 
-    public void OpenS()
-    {
+    public void OpenS() {
         if (pan.activeSelf)
         {
-            btext.text = "UIA";
+            btext.text = "Stream";
             pan.SetActive(false);
         }
         else
         {
-            btext.text = "Exit";
+            btext.text = "Close";
             pan.SetActive(true);
         }
     }
+  
 }

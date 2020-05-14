@@ -1,5 +1,6 @@
 /**
-SuitVital by Guan and Richard 
+SuitVital by Guan and Richard on 2020
+DUC button script 
 */
 using System.Collections;
 using System.Collections.Generic;
