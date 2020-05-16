@@ -17,18 +17,18 @@ public class ZxingTest : MonoBehaviour
 {
     private Rect screenRect;
     private WebCamTexture camTexture;
-   
+
 
     void Start()
     {
-        screenRect = new Rect(0, 0, 400,400);
+        screenRect = new Rect(0, 0, 400, 400);
         camTexture = new WebCamTexture();
         camTexture.requestedHeight = 400;
         camTexture.requestedWidth = 400;
         if (camTexture != null)
         {
             camTexture.Play();
-           
+
         }
     }
 
@@ -37,6 +37,7 @@ public class ZxingTest : MonoBehaviour
         // drawing the camera on screen
         GUI.DrawTexture(screenRect, camTexture, ScaleMode.ScaleToFit);
         // do the reading — you might want to attempt to read less often than you draw on the screen for performance sake
+//#if !UNITY_EDITOR
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
@@ -45,11 +46,13 @@ public class ZxingTest : MonoBehaviour
               camTexture.width, camTexture.height);
             if (result != null)
             {
-                Debug.Log("DECODED TEXT FROM QR: " +result.Text);
+                Debug.Log("DECODED TEXT FROM QR: " + result.Text);
             }
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             Debug.LogWarning(ex.Message);
         }
+//#endif
     }
 }
