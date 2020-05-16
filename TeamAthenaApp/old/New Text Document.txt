@@ -1,0 +1,7 @@
+https://futurism.com/how-do-scientists-find-directions-in-space
+https://forums.hololens.com/discussion/782/live-stream-of-locatable-camera-webcam-in-unity
+https://forums.hololens.com/discussion/2966/qr-scan-in-uwp-with-usb2-0-webcam-and-kinect-2
+https://mtaulty.com/2016/12/28/windows-10-uwp-qr-code-scanning-with-zxing-and-hololens/
+https://forums.hololens.com/discussion/3263/zxing-unity-barcode-dll-issue
+https://medium.com/@adrian.n/reading-and-generating-qr-codes-with-c-in-unity-3d-the-easy-way-a25e1d85ba51
+https://unitycoder.com/blog/2016/07/19/decode-qrcode-with-zxing-net-and-unity/
