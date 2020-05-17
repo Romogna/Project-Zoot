@@ -21,13 +21,7 @@ public class DialogueManager : MonoBehaviour
   
     void Start()
     {
-        /*//Create keywords for keyword recognizer
-        keywords.Add("start", () =>
-        {
-            // action to be performed when this keyword is spoken
-            StartDialogue();
-        });
-        */
+    
         //Create keywords for keyword recognizer
         keywords.Add("next", () =>
         {
@@ -46,8 +40,7 @@ public class DialogueManager : MonoBehaviour
 
         keywordRecognizer.Start();
 
-        //sentences = new Queue<string>();
-        // Start an array of unknown size
+        
         sentences = new ArrayList();
 
     }
@@ -73,17 +66,6 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    /*public void DisplayNextSentence()
-    {
-        if (sentences.Count == 0) 
-        {
-            EndDialogue();
-            return;
-        }
-
-        string sentence = sentences.Dequeue();
-        dialogueText.text = sentence;
-    }*/
 
     public void DisplayNextSentence()
     {

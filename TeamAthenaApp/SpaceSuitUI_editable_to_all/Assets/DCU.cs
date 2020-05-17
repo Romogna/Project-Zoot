@@ -27,7 +27,7 @@ public class DCU : MonoBehaviour
         keywords.Add("DCU", () =>
         {
             // Call the changeTarget function
-            Debug.Log("DUC");
+            Debug.Log("DCU");
             OpenS();
 
         });
