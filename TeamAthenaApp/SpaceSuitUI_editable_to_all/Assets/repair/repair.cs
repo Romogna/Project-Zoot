@@ -35,7 +35,7 @@ public class repair : MonoBehaviour
             OpenS();
 
         });
-        keywords.Add("Done", () =>
+        keywords.Add("done", () =>
         {
             // Call the changeTarget function
             Debug.Log("done");
