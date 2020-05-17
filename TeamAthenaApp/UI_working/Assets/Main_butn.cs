@@ -111,7 +111,7 @@ public class Main_butn : MonoBehaviour
         //double totalSeconds = ts.TotalSeconds;
         
         // Global Voice Command
-        keywords.Add("Vital", () =>
+        keywords.Add("Vital X", () =>
         {
             // Call the changeTarget function
             Debug.Log("Mini");
@@ -119,10 +119,10 @@ public class Main_butn : MonoBehaviour
 
         });
 
-        keywords.Add("Vital X", () =>
+        keywords.Add("Vital", () =>
         {
             // Call the changeTarget function
-            Debug.Log("Vital X");
+            Debug.Log("Vital");
             Display();
 
         });

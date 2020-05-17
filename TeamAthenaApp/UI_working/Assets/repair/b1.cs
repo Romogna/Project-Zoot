@@ -12,7 +12,7 @@ using UnityEngine.Windows.Speech;
 
 public class b1 : MonoBehaviour
 {
-
+    public Text tshow;
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
     Renderer quadRenderer;
@@ -96,6 +96,7 @@ public class b1 : MonoBehaviour
         string filename = string.Format(@"CapturedImage{0}.jpg", capturedImageCount);
         string fPath = System.IO.Path.Combine(Application.persistentDataPath, filename);
         Debug.Log(fPath);
+        tshow.text = fPath;
         photoCaptureObject.TakePhotoAsync(fPath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
     }
 
