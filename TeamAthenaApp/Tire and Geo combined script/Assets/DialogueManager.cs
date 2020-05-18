@@ -182,7 +182,7 @@ public class DialogueManager : MonoBehaviour
             }
 
             // script is for debugging current instruction number
-            Debug.Log("Tire " + instructionNumber);
+            Debug.Log("Tire " + instructionNumber);   
 
             // store instruction and change array object to an array string.
             sentence = (string)sentences[instructionNumber];
@@ -193,6 +193,8 @@ public class DialogueManager : MonoBehaviour
 
         if (!tireAppRunning)
         {
+            Debug.Log("In Geology Instructions");
+
             // Decrement count
             geoInstructionNumber--;
 
@@ -206,7 +208,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Geology " + geoInstructionNumber);
 
             // store instruction and change array object to an array string.
-            instruction = (string)sentences[geoInstructionNumber];
+            instruction = (string)instructions[geoInstructionNumber];
 
             // Display the instruction
             dialogueText.text = instruction;
