@@ -30,13 +30,13 @@ public class Tele : MonoBehaviour
             OpenS();
 
         });
-        keywords.Add("close", () =>
+        /*keywords.Add("close", () =>
         {
             // Call the changeTarget function
             Debug.Log("Close");
             OpenS();
 
-        });
+        });*/
 
 
         // Tell the KeywordRecognizer about our keywords.
@@ -67,7 +67,7 @@ public class Tele : MonoBehaviour
         }
         else
         {
-            btext.text = "Close";
+            btext.text = "Stream X";
             pan.SetActive(true);
         }
     }

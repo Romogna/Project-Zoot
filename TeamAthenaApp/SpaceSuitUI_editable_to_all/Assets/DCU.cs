@@ -31,13 +31,13 @@ public class DCU : MonoBehaviour
             OpenS();
 
         });
-        keywords.Add("Quit", () =>
+        /*keywords.Add("Quit", () =>
         {
             // Call the changeTarget function
             Debug.Log("Quit");
             OpenS();
 
-        });
+        });*/
 
 
         // Tell the KeywordRecognizer about our keywords.
@@ -69,7 +69,7 @@ public class DCU : MonoBehaviour
         }
         else
         {
-            btext.text = "Quit";
+            btext.text = "DCU X";
             pan.SetActive(true);
         }
     }

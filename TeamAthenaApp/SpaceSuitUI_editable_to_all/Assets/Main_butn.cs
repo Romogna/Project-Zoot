@@ -111,13 +111,13 @@ public class Main_butn : MonoBehaviour
         //double totalSeconds = ts.TotalSeconds;
         
         // Global Voice Command
-        keywords.Add("mini", () =>
+        /*keywords.Add("mini", () =>
         {
             // Call the changeTarget function
             Debug.Log("Mini");
             Mini();
 
-        });
+        });*/
 
         keywords.Add("Vital", () =>
         {
@@ -251,7 +251,7 @@ public class Main_butn : MonoBehaviour
         }
         else
         {
-            txt.text = "Mini";
+            txt.text = "Vital X";
             pan.SetActive(true);
         }
     }
@@ -259,7 +259,7 @@ public class Main_butn : MonoBehaviour
     public void Display()
     {
         pan.SetActive(true);
-        btext.text = "Mini";
+        btext.text = "Vital X";
     }
 
     public void Mini()

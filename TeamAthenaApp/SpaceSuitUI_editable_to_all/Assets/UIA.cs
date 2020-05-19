@@ -32,13 +32,13 @@ public class UIA : MonoBehaviour
             OpenS();
 
         });
-        keywords.Add("Exit", () =>
+        /*keywords.Add("Exit", () =>
         {
             // Call the changeTarget function
             Debug.Log("Exit");
             OpenS();
 
-        });
+        });*/
 
 
         // Tell the KeywordRecognizer about our keywords.
@@ -70,7 +70,7 @@ public class UIA : MonoBehaviour
         }
         else
         {
-            btext.text = "Exit";
+            btext.text = "UIA X";
             pan.SetActive(true);
         }
     }
