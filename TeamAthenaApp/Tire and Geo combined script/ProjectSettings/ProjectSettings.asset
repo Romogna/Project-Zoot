@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 18
-  productGUID: 0625645c6a0e47c4fba6732f41afa655
+  productGUID: bfc91aa60cf14434d8be211c57601301
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: TireDialogue
+  productName: updated_space_suit
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -104,6 +104,7 @@ PlayerSettings:
   xboxOneMonoLoggingLevel: 0
   xboxOneLoggingLevel: 1
   xboxOneDisableEsram: 0
+  xboxOneEnableTypeOptimization: 0
   xboxOnePresentImmediateThreshold: 0
   switchQueueCommandMemory: 0
   switchQueueControlMemory: 16384
@@ -293,7 +294,7 @@ PlayerSettings:
     m_Automatic: 1
   m_BuildTargetVRSettings:
   - m_BuildTarget: Standalone
-    m_Enabled: 0
+    m_Enabled: 1
     m_Devices:
     - Oculus
     - OpenVR
@@ -554,10 +555,10 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 00a67d8c6647d701
+  metroCertificateNotAfter: 005b535f724cd701
   metroApplicationDescription: Template_3D
   wsaImages: {}
-  metroTileShortName: TireDialogue
+  metroTileShortName: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -576,29 +577,29 @@ PlayerSettings:
       Appointments: False
       BackgroundMediaPlayback: False
       BlockedChatMessages: False
-      Bluetooth: False
-      Chat: False
+      Bluetooth: True
+      Chat: True
       CodeGeneration: False
       Contacts: False
       EnterpriseAuthentication: False
-      HumanInterfaceDevice: False
+      HumanInterfaceDevice: True
       InputInjectionBrokered: False
       InternetClient: True
-      InternetClientServer: False
+      InternetClientServer: True
       Location: False
       LowLevelDevices: False
       Microphone: True
       MusicLibrary: False
       Objects3D: False
       OfflineMapsManagement: False
-      PhoneCall: False
+      PhoneCall: True
       PhoneCallHistoryPublic: False
-      PicturesLibrary: False
+      PicturesLibrary: True
       PointOfService: False
-      PrivateNetworkClientServer: False
+      PrivateNetworkClientServer: True
       Proximity: False
       RecordedCallsFolder: False
-      RemoteSystem: False
+      RemoteSystem: True
       RemovableStorage: False
       SharedUserCertificates: False
       SpatialPerception: False
@@ -611,7 +612,7 @@ PlayerSettings:
       WebCam: True
   metroTargetDeviceFamilies:
     Desktop: False
-    Holographic: False
+    Holographic: True
     IoT: False
     IoTHeadless: False
     Mobile: False
@@ -672,10 +673,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 92148a9a-d028-415c-ab0e-cf13ee21660a
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: updated_space_suit
+  organizationId: rmhowe2
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

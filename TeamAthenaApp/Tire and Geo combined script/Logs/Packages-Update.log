@@ -1,5 +1,5 @@
 
-=== Mon Mar  9 20:53:25 2020
+=== Wed May  6 23:16:43 2020
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -42,7 +42,7 @@ The following packages were added:
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
 
-=== Tue May 12 06:13:49 2020
+=== Thu May 14 15:37:11 2020
 
 Packages were changed.
 Update Mode: resetToDefaultDependencies
@@ -85,13 +85,13 @@ The following packages were added:
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
 
-=== Mon May 18 14:01:47 2020
+=== Mon May 18 16:40:33 2020
 
 Packages were changed.
 Update Mode: resetToDefaultDependencies
 
 The following packages were added:
-  com.unity.analytics@3.2.2
+  com.unity.analytics@3.2.3
   com.unity.purchasing@2.0.3
   com.unity.ads@2.0.8
   com.unity.textmeshpro@1.4.1
