@@ -45,13 +45,13 @@ public class DialogueManagerG : MonoBehaviour
 
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(DialogueG dialogueG)
     {
         //nameText.text = dialogue.name;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogueG.sentences)
         {
 
             sentences.Add(sentence);

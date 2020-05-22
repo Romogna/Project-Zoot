@@ -3880,7 +3880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a33035b0bc21af41b1dc76b3d2b923f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueG:
     sentences:
     - "1. Review geology mission materials and quantities being sampled. Collect and
       scan tool tags. \r\nSample Bags: 1 bag minimum per unique sample (location and
@@ -4448,7 +4448,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1121329727}
         m_MethodName: DisplayPreviousSentence
         m_Mode: 1
         m_Arguments:
@@ -6950,7 +6950,7 @@ RectTransform:
   m_GameObject: {fileID: 1439457515}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.07000001, y: 0.07000001, z: 0.07000001}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_Children:
   - {fileID: 14200452}
   m_Father: {fileID: 871639150}
@@ -9101,7 +9101,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1121329727}
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
@@ -10086,7 +10086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2083874861
 RectTransform:
   m_ObjectHideFlags: 0

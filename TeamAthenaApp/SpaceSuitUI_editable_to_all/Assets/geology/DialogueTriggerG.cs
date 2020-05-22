@@ -10,7 +10,7 @@ public class DialogueTriggerG : MonoBehaviour
     KeywordRecognizer keywordRecognizer;//keyword recognizer
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();//keyword recognizer
 
-    public Dialogue dialogue;
+    public DialogueG dialogueG;
     void Start()
     {
         //Create keywords for keyword recognizer
@@ -29,7 +29,7 @@ public class DialogueTriggerG : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        FindObjectOfType<DialogueManagerG>().StartDialogue(dialogueG);
     }
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
