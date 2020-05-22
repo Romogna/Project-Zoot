@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
             // action to be performed when this keyword is spoken
             DisplayPreviousSentence();
         });
-        keywords.Add("open note", () =>
+        keywords.Add("begin note", () =>
         {
             noteTaking();
         });
@@ -290,9 +290,7 @@ public class DialogueManager : MonoBehaviour
         // Displays what was said to the UI
         dictationDisplay.text = textSoFar.ToString();
 
-        content = "Login date: " + System.DateTime.Now + "\n";
-
-        content = textSoFar.ToString();
+        content = "Login date: " + System.DateTime.Now + "\n" + textSoFar.ToString();
 
         File.AppendAllText(path, content);
     }
@@ -359,11 +357,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (tireAppRunning)
         {
-            path = Application.dataPath + "/Tire_Repair_Notes.txt";
+            path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
 
             if (!File.Exists(path))
             {
-                File.WriteAllText(path, "notes \n\n");
+                File.WriteAllText(path, "Tire_repair_notes \n\n");
             }
 
             Debug.Log("Save to Tire Repair Notes");
@@ -371,11 +369,11 @@ public class DialogueManager : MonoBehaviour
 
         if (!tireAppRunning)
         {
-            path = Application.dataPath + "/Geology_Notes.txt";
+            path = Application.dataPath + "/00_Geology_Notes.txt";
 
             if (!File.Exists(path))
             {
-                File.WriteAllText(path, "notes \n\n");
+                File.WriteAllText(path, "Geology notes \n\n");
             }
 
             Debug.Log("Save to Geology Notes");
