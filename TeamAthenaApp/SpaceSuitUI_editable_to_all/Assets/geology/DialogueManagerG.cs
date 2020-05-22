@@ -34,6 +34,11 @@ public class DialogueManagerG : MonoBehaviour
             // action to be performed when this keyword is spoken
             DisplayPreviousSentence();
         });
+        keywords.Add("begin note", () =>
+        {
+            // action to be performed when this keyword is spoken
+            DisplayPreviousSentence();
+        });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
@@ -118,9 +123,148 @@ public class DialogueManagerG : MonoBehaviour
             keywordAction.Invoke();
         }
     }
-
-    void EndDialogue()
+/// <summary> ############################################################
+    /// ---------------------  Dictation Methods below  ----------------------
+    /// </summary> ###########################################################
+    public void noteTaking()
     {
-        Debug.Log("End of conversation.");
+        if (!IsRunning)
+        {
+            // Create file to store dictation text
+            CreateText();
+
+            // stop keyword recognizer to prevent dictation recognition conflict
+            PhraseRecognitionSystem.Shutdown();
+
+            Debug.Log("Shutting down Phrase Recognition");
+
+            dictationRecognizer = new DictationRecognizer();
+
+            dictationRecognizer.InitialSilenceTimeoutSeconds = 6f;
+            dictationRecognizer.AutoSilenceTimeoutSeconds = 6f;
+
+            dictationRecognizer.DictationResult += dictationRecognizer_DictationResult;
+            dictationRecognizer.DictationHypothesis += dictationRecognizer_DictationHypothesis;
+            dictationRecognizer.DictationComplete += dictationRecognizer_DictationComplete;
+            dictationRecognizer.DictationError += dictationRecognizer_DictationError;
+
+            textSoFar = new StringBuilder();
+
+            // Used for debugging to show dictation parameters has been activated.
+            // So, dictation can be used in App.
+            Debug.Log("Initiliazed Dictation Recognizer");
+
+            // Start dictation recogntion
+            dictationRecognizer.Start();
+
+            // Change bool to true for dictation control
+            IsRunning = true;
+
+            checkDictationOn();
+
+            // Used for debugging to show dictation recognizer has started.
+            Debug.Log("Dictation started");
+        }
     }
+
+    private void dictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
+    {
+        // Displays what the App belives was spoken and displays it in console
+        Debug.LogFormat("Dictation result: {0}", text);
+
+        textSoFar.Append(text + ". \n");
+
+        // Displays what was said to the UI
+        dictationDisplay.text = textSoFar.ToString();
+
+        content = "Login date: " + System.DateTime.Now + "\n" + textSoFar.ToString();
+
+        File.AppendAllText(path, content);
+    }
+
+    void dictationRecognizer_DictationHypothesis(string text)
+    {
+        // Displays what the App processed was spoken
+        Debug.LogFormat("Dictation hypothesis: {0}", text);
+
+        dictationDisplay.text = textSoFar.ToString() + " " + text + "...";
+    }
+
+    void dictationRecognizer_DictationComplete(DictationCompletionCause completionCause)
+    {
+        if (completionCause != DictationCompletionCause.Complete)
+        {
+            Debug.Log("Dictation completed unsuccessfully: {0}.", completionCause);
+        }
+        Debug.Log("Dictation complete");
+
+        dictationDisplay.text = "";
+
+        keywordRestart();
+    }
+
+    void dictationRecognizer_DictationError(string error, int hresult)
+    {
+        Debug.LogErrorFormat("Dictation error: {0}; HResult = {1}.", error, hresult);
+    }
+
+    public void keywordRestart()
+    {
+        dictationRecognizer.Stop();
+        dictationRecognizer.Dispose();
+        IsRunning = false;
+        checkDictationOn();
+        PhraseRecognitionSystem.Restart();
+        keywordRecognizer.Start();
+    }
+
+    public void checkDictationOn()
+    {
+        if (IsRunning)
+        {
+            dictationListening();
+        }
+        else
+            dictationOff();
+    }
+
+    private void dictationListening()
+    {
+        Debug.Log("Dictation Listening On");
+        this.dictationText.text = "Dictation ON";
+    }
+
+    private void dictationOff()
+    {
+        Debug.Log("Dictation Off");
+        this.dictationText.text = "Dictation OFF";
+    }
+
+    public void CreateText()
+    {
+        if (tireAppRunning)
+        {
+            path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
+
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, "Tire_repair_notes \n\n");
+            }
+
+            Debug.Log("Save to Tire Repair Notes");
+        }
+
+        if (!tireAppRunning)
+        {
+            path = Application.dataPath + "/00_Geology_Notes.txt";
+
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, "Geology notes \n\n");
+            }
+
+            Debug.Log("Save to Geology Notes");
+        }        
+    }
+    
 }
