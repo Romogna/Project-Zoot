@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech; //keyword recognizer
@@ -207,7 +209,7 @@ public class DialogueManagerG : MonoBehaviour
     {
         if (completionCause != DictationCompletionCause.Complete)
         {
-            Debug.Log("Dictation completed unsuccessfully: {0}.", completionCause);
+            
         }
         Debug.Log("Dictation complete");
 
@@ -263,7 +265,7 @@ public class DialogueManagerG : MonoBehaviour
             }
 
             Debug.Log("Save to Geology Notes");
-        }        
+                
     }
     
 }
