@@ -19,6 +19,19 @@ public class DialogueManagerG : MonoBehaviour
     private int totalInstructions; // Emery code
     private int instructionNumber; // Emery code
 
+    // -------------- Setup for Dictation Recognizer ------------------
+    private DictationRecognizer dictationRecognizer;
+    [SerializeField]
+    private Text dictationDisplay;
+    private StringBuilder textSoFar;
+    public bool IsRunning;
+    public Text dictationText;
+
+    // -------------- Setup to save Dictation --------------------------
+    // Path to file
+    public string path;
+    public string content;
+
     void Start()
     {
 
@@ -177,7 +190,7 @@ public class DialogueManagerG : MonoBehaviour
         // Displays what was said to the UI
         dictationDisplay.text = textSoFar.ToString();
 
-        content = "Login date: " + System.DateTime.Now + "\n" + textSoFar.ToString();
+        content = "Login date: " + System.DateTime.Now + "\n" + textSoFar.ToString() + "\n";
 
         File.AppendAllText(path, content);
     }
@@ -242,20 +255,6 @@ public class DialogueManagerG : MonoBehaviour
 
     public void CreateText()
     {
-        if (tireAppRunning)
-        {
-            path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
-
-            if (!File.Exists(path))
-            {
-                File.WriteAllText(path, "Tire_repair_notes \n\n");
-            }
-
-            Debug.Log("Save to Tire Repair Notes");
-        }
-
-        if (!tireAppRunning)
-        {
             path = Application.dataPath + "/00_Geology_Notes.txt";
 
             if (!File.Exists(path))
