@@ -52,7 +52,7 @@ public class DialogueManagerG : MonoBehaviour
         keywords.Add("begin note", () =>
         {
             // action to be performed when this keyword is spoken
-            DisplayPreviousSentence();
+            noteTaking();
         });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
