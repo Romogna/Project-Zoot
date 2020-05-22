@@ -18,6 +18,7 @@ public class cam : MonoBehaviour
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
     Renderer quadRenderer;
+    public Text Textd;
 
     //for display
     public RawImage ri;
@@ -102,6 +103,7 @@ public class cam : MonoBehaviour
     void OnCapturedPhotoToDisk(PhotoCapture.PhotoCaptureResult result)
     {
         Debug.Log("Saving......");
+        Textd.text = "Saving... ";
         if (capturedImageCount < maxphoto)
         {
             Debug.Log("Saved Photo to the  disk!");
@@ -202,7 +204,7 @@ public class cam : MonoBehaviour
         if (TextResult != null)
         {
             Debug.Log("Result decoding: " + TextResult.Text);
-
+                    Textd.text = "Result decoding: " + TextResult.Text;
             //
             // Do what you want with the result here
             //
@@ -210,7 +212,8 @@ public class cam : MonoBehaviour
         //If QR code not detected
         else
         {
-            Debug.Log("No QR code detected");
+                    Textd.text = "No QR code detected";
+                    Debug.Log("No QR code detected");
         }
                 camTexture.Play();
             }
