@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 190468180}
+      - m_Target: {fileID: 1469874772}
         m_MethodName: noteTaking
         m_Mode: 1
         m_Arguments:
@@ -1338,7 +1338,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b952c06e8564424c938c2e6ac2aea6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   dialogueText: {fileID: 0}
+  sentence: 
+  totalInstructions: 0
+  instructionNumber: 0
   dictationDisplay: {fileID: 0}
   IsRunning: 0
   dictationText: {fileID: 0}
@@ -2928,7 +2981,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 499032450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1469874772}
+        m_MethodName: noteTaking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &499032450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3896,7 +3960,6 @@ GameObject:
   - component: {fileID: 742181901}
   - component: {fileID: 742181900}
   - component: {fileID: 742181898}
-  - component: {fileID: 742181899}
   m_Layer: 5
   m_Name: Start ButtonG
   m_TagString: Untagged
@@ -3964,8 +4027,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 742181899}
-        m_MethodName: TriggerDialogue
+      - m_Target: {fileID: 1469874772}
+        m_MethodName: TriggerGeologyInstructions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3975,45 +4038,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &742181899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742181896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a33035b0bc21af41b1dc76b3d2b923f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueG:
-    sentences:
-    - "1. Review geology mission materials and quantities being sampled. Collect and
-      scan tool tags. \r\nSample Bags: 1 bag minimum per unique sample (location and
-      type)\r\nFor regolith (soil) sampling: select: Surface Sampling Pad and Small
-      Scoop\r\nFor pebble (diameter > 1 cm) collection: select Rake\r\nFor rock (diameter
-      < 10cm) collection: select Tongs\r\n"
-    - 2. Minimize Geology Sampling App and Navigate to Geology worksite.
-    - "3. Start Audio Recording and Document Pre-Sampling Information:\r\nGeology
-      Mission Identifier, Mission Location, Date & Time\r\nTeam Members Involved &
-      Roles\r\nGeology Tools being utilized during \r\n"
-    - "4. Continue Audio Recording and Pre-Sampling Documentation\r\nNote Telemetry
-      Stream Readings: Temperature, Atmosphere, Visibility, Attitude\r\nDescribe distinguishing
-      features of worksite and capture photos\r\n"
-    - "5. For Pebble and Rock Geology Samples: Photograph, and Audio Document:\r\nDescribe
-      sample shape, approximate metric size, and environmental surface features.\r\nDocument
-      sample color, texture, finish and mineral description.\r\nDescribe sample durability
-      and density.\r\nStow sample in bag and load in rover. \r\nRepeat this step for
-      all pebble and rock collections.\r\n"
-    - "6. For Regolith (Soil) Samples: Photograph, and Audio Document:\r\nDescribe
-      environmental surface features.\r\nDocument sample color, texture, finish and
-      mineral description.\r\nOpen Surface Sampling Pad, ensure cloth sampler is installed,
-      press cloth into soil, remove and close Surface Sampling Pad.\r\nScoop and stow
-      sample in bag. \r\nLoad sample bag and surface sampling pad in rover.\r\nRepeat
-      this step for all regolith (soil) collections\r\n"
-    - '7. Once Mission Complete: Audio document completion time, clean and store tools,
-      close app and navigate back to base.'
 --- !u!114 &742181900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4632,7 +4656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1121329727}
+      - m_Target: {fileID: 1469874772}
         m_MethodName: DisplayPreviousSentence
         m_Mode: 1
         m_Arguments:
@@ -5511,8 +5535,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1025324024}
-        m_MethodName: TriggerDialogue
+      - m_Target: {fileID: 1469874772}
+        m_MethodName: TriggerTireInstructions
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6068,7 +6092,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b952c06e8564424c938c2e6ac2aea6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   dialogueText: {fileID: 650975663}
+  sentence: 
+  totalInstructions: 0
+  instructionNumber: 0
   dictationDisplay: {fileID: 1887709519}
   IsRunning: 0
   dictationText: {fileID: 114293206}
@@ -7277,9 +7354,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cf9d8d43818f6408e080d87fe31e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tireAppRunning: 0
   dialogueText: {fileID: 355464878}
-  tireDictationDisplay: {fileID: 1991801}
-  isTireRunning: 0
+  geoDialogueText: {fileID: 650975663}
+  dialogue:
+    sentences:
+    - 1. Obtain Lug Nut Wrench, and confirm with QR Code Scan.
+    - 2. Obtain replacement Wheel Assembly.
+    - 3. Proceed to damaged wheel assembly and loosen each lug nut 1/4 turn.
+    - 4. Locate Tire Elevation bolt, turn bolt CCW until Wheel Assembly rotates freely.
+    - '5. Remove Lug Nuts in star pattern and store in parts pouch. After Lug Nuts
+      removed, tether Lug Nut Wrench. '
+    - 6. Remove and Replace Wheel Assembly. Apply Lug Nuts in star pattern to hand
+      tightness. Ensure wheel assembly is mounted flush to brake disc.
+    - 7. Turn Tire Elevation bolt CW until wheel assembly engaged with ground and
+      bolt fully turned.
+    - 8. Tighten Lug Nuts with Lug Nut Wrench until lug nuts are 1/8 turn past tight.
+    - 9. Audio Note & Photo document Damaged Wheel Assembly.
+    - 10. Return Damaged Wheel Assembly. Return Lug Nut Wrench and QR Code Scan Tool.
+  geology:
+    instructions:
+    - "1. Review geology mission materials and quantities being sampled. Collect and
+      scan tool tags. \r\nSample Bags: 1 bag minimum per unique sample (location and
+      type)\r\nFor regolith (soil) sampling: select: Surface Sampling Pad and Small
+      Scoop\r\nFor pebble (diameter > 1 cm) collection: select Rake\r\nFor rock (diameter
+      < 10cm) collection: select Tongs\r\n"
+    - 2. Minimize Geology Sampling App and Navigate to Geology worksite.
+    - "3. Start Audio Recording and Document Pre-Sampling Information:\r\nGeology
+      Mission Identifier, Mission Location, Date & Time\r\nTeam Members Involved &
+      Roles\r\nGeology Tools being utilized during \r\n"
+    - "4. Continue Audio Recording and Pre-Sampling Documentation\r\nNote Telemetry
+      Stream Readings: Temperature, Atmosphere, Visibility, Attitude\r\nDescribe distinguishing
+      features of worksite and capture photos\r"
+    - "5. For Pebble and Rock Geology Samples: Photograph, and Audio Document:\r\nDescribe
+      sample shape, approximate metric size, and environmental surface features.\r\nDocument
+      sample color, texture, finish and mineral description.\r\nDescribe sample durability
+      and density.\r\nStow sample in bag and load in rover. \r\nRepeat this step for
+      all pebble and rock collections.\r\n"
+    - "6. For Regolith (Soil) Samples: Photograph, and Audio Document:\r\nDescribe
+      environmental surface features.\r\nDocument sample color, texture, finish and
+      mineral description.\r\nOpen Surface Sampling Pad, ensure cloth sampler is installed,
+      press cloth into soil, remove and close Surface Sampling Pad.\r\nScoop and stow
+      sample in bag. \r\nLoad sample bag and surface sampling pad in rover.\r\nRepeat
+      this step for all regolith (soil) collections\r\n"
+    - '7. Once Mission Complete: Audio document completion time, clean and store tools,
+      close app and navigate back to base.'
+  instruction: 
+  dictationDisplay: {fileID: 1991801}
+  isRunning: 0
   dictationIndicatorText: {fileID: 858923851}
   path: 
   content: 
@@ -9283,7 +9405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1121329727}
+      - m_Target: {fileID: 1469874772}
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:

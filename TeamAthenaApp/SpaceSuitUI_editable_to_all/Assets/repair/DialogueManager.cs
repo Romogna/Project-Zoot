@@ -12,20 +12,33 @@ public class DialogueManager : MonoBehaviour
     KeywordRecognizer keywordRecognizer;//keyword recognizer
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();//keyword recognizer
 
-    public Text dialogueText;
-    private string sentence; // Emery code but changed instruction to sentence
+    // Bool which app is currently running
+    public bool tireAppRunning;
 
-    //private Queue<string> sentences;
+    // Used to display text to display
+    public Text dialogueText;
+    public Text geoDialogueText;
+
+    // -------------- Setup for Tire Instructions --------------------
+    public Dialogue dialogue;
+    private string sentence; // Emery code but changed instruction to sentence
     private ArrayList sentences; // Emery code but changed instructions to sentences
     private int totalInstructions; // Emery code
     private int instructionNumber; // Emery code
 
+    // -------------- Setup for Geology Instructions ------------------
+    public Geology geology;
+    public string instruction;
+    private ArrayList instructions;
+    private int totalGeoInstructions;
+    private int geoInstructionNumber;
+
     // -------------- Setup for Dictation Recognizer ------------------
     private DictationRecognizer dictationRecognizer;
     [SerializeField]
-    private Text tireDictationDisplay;
+    private Text dictationDisplay;
     private StringBuilder textSoFar;
-    public bool isTireRunning;
+    public bool isRunning;
     public Text dictationIndicatorText;
 
     // -------------- Setup to save Dictation --------------------------
@@ -36,29 +49,52 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         //Create keywords for keyword recognizer
+        keywords.Add("open geology", () =>
+        {
+            tireAppRunning = false;
+            TriggerGeologyInstructions();
+        });
+        keywords.Add("tire repair", () =>
+        {
+            tireAppRunning = true;
+            TriggerTireInstructions();
+        });
         keywords.Add("next", () =>
         {
-            // action to be performed when this keyword is spoken
-            DisplayNextSentence();
+           DisplayNextSentence();
         });
-        //Create keywords for keyword recognizer
         keywords.Add("previous", () =>
         {
-            // action to be performed when this keyword is spoken
-            DisplayPreviousSentence();
+           DisplayPreviousSentence();
+        });
+        keywords.Add("begin note", () =>
+        {
+            noteTaking();
         });
 
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
 
         keywordRecognizer.Start();
-                
+        
+        // For Tire App instructions
         sentences = new ArrayList();
+
+        // For Geology App instructions
+        instructions = new ArrayList();
     }
 
-     public void StartDialogue (Dialogue dialogue)
+    /// <summary>################################################################
+    ///  ---------------------- Tire Instructions -------------------------------
+    /// </summary>###############################################################
+    public void TriggerTireInstructions()
     {
-        //nameText.text = dialogue.name;
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
+
+    public void StartDialogue (Dialogue dialogue)
+    {
+        tireAppRunning = true;
 
         sentences.Clear();
 
@@ -75,48 +111,130 @@ public class DialogueManager : MonoBehaviour
 
         DisplayNextSentence();
     }
+    
+    /// <summary>################################################################
+    ///  --------------------- Geolgy Instructions ------------------------------
+    /// </summary>###############################################################
+    public void TriggerGeologyInstructions()
+    {
+        FindObjectOfType<DialogueManager>().StartGeology(geology);
+    }
 
+    public void StartGeology(Geology geology)
+    {
+        tireAppRunning = false;
+
+        instructions.Clear();
+
+        foreach (string instruction in geology.instructions)
+        {
+            instructions.Add(instruction);
+        }
+        // used for debugging
+        totalGeoInstructions = instructions.Count;
+        Debug.Log(totalGeoInstructions);
+
+        // Initialize code count to -1. Because count is set to 0 in DisplayNextSentence method.
+        geoInstructionNumber = -1;
+
+        DisplayNextSentence();
+    }
+
+    /// <summary>################################################################
+    ///  --------------------- Instructions Control -----------------------------
+    /// </summary>###############################################################
 
     public void DisplayNextSentence()
     {
-        // Increment count by 1
-        instructionNumber++;
+        Debug.Log("Tire is bool is " + tireAppRunning);
 
-        // Check if count is greater than array size. If greater, decrement count.
-        if (sentences.Count <= instructionNumber)
+        if (tireAppRunning)
         {
-            instructionNumber = instructionNumber - 1;
+            // Increment count by 1
+            instructionNumber++;
+
+            // Check if count is greater than array size. If greater, decrement count.
+            if (sentences.Count <= instructionNumber)
+            {
+                instructionNumber = instructionNumber - 1;
+            }
+            Debug.Log("Tire " + instructionNumber);
+
+            // store instruction and change array object to an array string.
+            sentence = (string)sentences[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = sentence;
         }
 
-        // script is for debugging current instruction number
-        Debug.Log(instructionNumber);
+        if (!tireAppRunning)
+        {
+            // Increment count by 1
+            geoInstructionNumber++;
 
-        // store instruction and change array object to an array string.
-        sentence = (string)sentences[instructionNumber];
+            if (instructions.Count <= geoInstructionNumber)
+            {
+                geoInstructionNumber = geoInstructionNumber - 1;
+            }
 
-        // Display the instruction
-        dialogueText.text = sentence;
+            // script is for debugging current instruction number
+            Debug.Log("Geology " + geoInstructionNumber);
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[geoInstructionNumber];
+
+            // Display the instruction
+            geoDialogueText.text = instruction;
+        }
     }
 
     public void DisplayPreviousSentence()
     {
-        // Decrement count
-        instructionNumber--;
+        Debug.Log("Tire app is " + tireAppRunning);
 
-        // Check if count drops below 0. If it does, set it back to 0.
-        if (instructionNumber < 0)
+        if (tireAppRunning)
         {
-            instructionNumber = 0;
+            // Decrement count
+            instructionNumber--;
+
+            // Check if count drops below 0. If it does, set it back to 0.
+            if (instructionNumber < 0)
+            {
+                instructionNumber = 0;
+            }
+
+            // script is for debugging current instruction number
+            Debug.Log("Tire " + instructionNumber);
+
+            // store instruction and change array object to an array string.
+            sentence = (string)sentences[instructionNumber];
+
+            // Display the instruction
+            dialogueText.text = sentence;
         }
 
-        // script is for debugging current instruction number
-        Debug.Log(instructionNumber);
+        if (!tireAppRunning)
+        {
+            Debug.Log("In Geology Instructions");
 
-        // store instruction and change array object to an array string.
-        sentence = (string)sentences[instructionNumber];
+            // Decrement count
+            geoInstructionNumber--;
 
-        // Display the instruction
-        dialogueText.text = sentence;
+            // Check if count drops below 0. If it does, set it back to 0.
+            if (geoInstructionNumber < 0)
+            {
+                geoInstructionNumber = 0;
+            }
+
+            // script is for debugging current instruction number
+            Debug.Log("Geology " + geoInstructionNumber);
+
+            // store instruction and change array object to an array string.
+            instruction = (string)instructions[geoInstructionNumber];
+
+            // Display the instruction
+            geoDialogueText.text = instruction;
+        }
     }
 
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
@@ -134,7 +252,7 @@ public class DialogueManager : MonoBehaviour
 /// </summary> ###########################################################
     public void noteTaking()
     {
-        if (!isTireRunning)
+        if (!isRunning)
         {
             // Create file to store dictation text
             CreateText();
@@ -164,7 +282,7 @@ public class DialogueManager : MonoBehaviour
             dictationRecognizer.Start();
 
             // Change bool to true for dictation control
-            isTireRunning = true;
+            isRunning = true;
 
             checkDictationOn();
 
@@ -181,7 +299,7 @@ public class DialogueManager : MonoBehaviour
         textSoFar.Append(text + ". \n");
 
         // Displays what was said to the UI
-        tireDictationDisplay.text = textSoFar.ToString();
+        dictationDisplay.text = textSoFar.ToString();
 
         content = "Login date: " + System.DateTime.Now + "\n" + textSoFar.ToString() + "\n";
 
@@ -193,7 +311,7 @@ public class DialogueManager : MonoBehaviour
         // Displays what the App processed was spoken
         Debug.LogFormat("Dictation hypothesis: {0}", text);
 
-        tireDictationDisplay.text = textSoFar.ToString() + " " + text + "...";
+        dictationDisplay.text = textSoFar.ToString() + " " + text + "...";
     }
 
     void dictationRecognizer_DictationComplete(DictationCompletionCause completionCause)
@@ -203,7 +321,7 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Dictation complete");
         }
 
-        tireDictationDisplay.text = "";
+        dictationDisplay.text = "";
 
         keywordRestart();
     }
@@ -217,7 +335,7 @@ public class DialogueManager : MonoBehaviour
     {
         dictationRecognizer.Stop();
         dictationRecognizer.Dispose();
-        isTireRunning = false;
+        isRunning = false;
         checkDictationOn();
         PhraseRecognitionSystem.Restart();
         keywordRecognizer.Start();
@@ -225,7 +343,7 @@ public class DialogueManager : MonoBehaviour
 
     public void checkDictationOn()
     {
-        if (isTireRunning)
+        if (isRunning)
         {
             dictationListening();
         }
@@ -247,13 +365,28 @@ public class DialogueManager : MonoBehaviour
 
     public void CreateText()
     {
-        path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
-
-        if (!File.Exists(path))
+        if (tireAppRunning)
         {
-            File.WriteAllText(path, "Tire Repair notes \n\n");
+            path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
+
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, "Tire_repair_notes \n\n");
+            }
+
+            Debug.Log("Save to Tire Repair Notes");
         }
 
-        Debug.Log("Save to Tire Repair Notes");
+        if (!tireAppRunning)
+        {
+            path = Application.dataPath + "/00_Geology_Notes.txt";
+
+            if (!File.Exists(path))
+            {
+                File.WriteAllText(path, "Geology notes \n\n");
+            }
+
+            Debug.Log("Save to Geology Notes");
+        }
     }
 }
