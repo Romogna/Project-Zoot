@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1991802}
   - component: {fileID: 1991801}
   m_Layer: 5
-  m_Name: name
+  m_Name: Tire Dictation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,8 +146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -419, y: -93}
-  m_SizeDelta: {x: 71.19, y: 30}
+  m_AnchoredPosition: {x: 710.2, y: 2.9208}
+  m_SizeDelta: {x: 243.6, y: 96.068}
   m_Pivot: {x: 0.49999997, y: 0.50000024}
 --- !u!114 &1991801
 MonoBehaviour:
@@ -711,6 +711,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96302331}
   m_CullTransparentMesh: 0
+--- !u!1 &114293204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114293205}
+  - component: {fileID: 114293207}
+  - component: {fileID: 114293206}
+  m_Layer: 5
+  m_Name: Geology Dictation Indicator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &114293205
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114293204}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3333335, y: 2.3333335, z: 2.3333335}
+  m_Children: []
+  m_Father: {fileID: 1960904924}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -366.5, y: -298.3}
+  m_SizeDelta: {x: 116.2, y: 22.9}
+  m_Pivot: {x: 0.49999997, y: 0.50000024}
+--- !u!114 &114293206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114293204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &114293207
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114293204}
+  m_CullTransparentMesh: 0
 --- !u!1 &121202414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,9 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b952c06e8564424c938c2e6ac2aea6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 0}
   dialogueText: {fileID: 0}
-  sentence: 
   dictationDisplay: {fileID: 0}
   IsRunning: 0
   dictationText: {fileID: 0}
@@ -4324,6 +4399,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828201634}
   m_CullTransparentMesh: 0
+--- !u!1 &858923849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858923850}
+  - component: {fileID: 858923852}
+  - component: {fileID: 858923851}
+  m_Layer: 5
+  m_Name: Tire Incator On
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &858923850
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858923849}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.3333335, y: 2.3333335, z: 2.3333335}
+  m_Children: []
+  m_Father: {fileID: 1828749874}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 560.3, y: 157.4}
+  m_SizeDelta: {x: 115.1, y: 15.9}
+  m_Pivot: {x: 0.49999997, y: 0.50000024}
+--- !u!114 &858923851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858923849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &858923852
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858923849}
+  m_CullTransparentMesh: 0
 --- !u!1 &860578245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5916,12 +6068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b952c06e8564424c938c2e6ac2aea6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 1887709519}
   dialogueText: {fileID: 650975663}
-  sentence: 
   dictationDisplay: {fileID: 1887709519}
   IsRunning: 0
-  dictationText: {fileID: 0}
+  dictationText: {fileID: 114293206}
   path: 
   content: 
 --- !u!4 &1121329728
@@ -7127,9 +7277,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cf9d8d43818f6408e080d87fe31e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: {fileID: 1991801}
   dialogueText: {fileID: 355464878}
-  sentence: 
+  tireDictationDisplay: {fileID: 1991801}
+  isTireRunning: 0
+  dictationIndicatorText: {fileID: 858923851}
+  path: 
+  content: 
 --- !u!4 &1469874773
 Transform:
   m_ObjectHideFlags: 0
@@ -8647,6 +8800,7 @@ RectTransform:
   m_Children:
   - {fileID: 1991800}
   - {fileID: 355464877}
+  - {fileID: 858923850}
   m_Father: {fileID: 926170222}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9038,15 +9192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69971b584145e54a8a6f32e3d53c249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
-  m_NormalizedNavigationToScreenOffsetScalar: 500
-  m_TimeToPressOnTap: 0.3
 --- !u!114 &1868775015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9196,7 +9341,7 @@ GameObject:
   - component: {fileID: 1887709520}
   - component: {fileID: 1887709519}
   m_Layer: 5
-  m_Name: nameG
+  m_Name: Geology Dictation Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9523,6 +9668,7 @@ RectTransform:
   m_Children:
   - {fileID: 1887709518}
   - {fileID: 650975662}
+  - {fileID: 114293205}
   m_Father: {fileID: 2083874861}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

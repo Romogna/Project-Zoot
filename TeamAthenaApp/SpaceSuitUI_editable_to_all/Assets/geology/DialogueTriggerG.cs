@@ -24,7 +24,6 @@ public class DialogueTriggerG : MonoBehaviour
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
 
         keywordRecognizer.Start();
-
     }
 
     public void TriggerDialogue()
@@ -39,9 +38,5 @@ public class DialogueTriggerG : MonoBehaviour
         {
             keywordAction.Invoke();
         }
-    }
-    void EndDialogue()
-    {
-        Debug.Log("End of conversation.");
     }
 }

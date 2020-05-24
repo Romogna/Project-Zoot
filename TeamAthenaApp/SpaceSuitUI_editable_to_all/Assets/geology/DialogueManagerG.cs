@@ -12,11 +12,9 @@ public class DialogueManagerG : MonoBehaviour
     KeywordRecognizer keywordRecognizer;//keyword recognizer
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();//keyword recognizer
 
-    public Text nameText;
     public Text dialogueText;
-    public string sentence; // Emery code but changed instruction to sentence
+    private string sentence; // Emery code but changed instruction to sentence
 
-    //private Queue<string> sentences;
     private ArrayList sentences; // Emery code but changed instructions to sentences
     private int totalInstructions; // Emery code
     private int instructionNumber; // Emery code
@@ -59,23 +57,19 @@ public class DialogueManagerG : MonoBehaviour
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
 
         keywordRecognizer.Start();
-
-
+        
         sentences = new ArrayList();
-
     }
 
     public void StartDialogue(DialogueG dialogueG)
     {
-        //nameText.text = dialogue.name;
-
         sentences.Clear();
 
         foreach (string sentence in dialogueG.sentences)
         {
-
             sentences.Add(sentence);
         }
+
         // used for debugging
         totalInstructions = sentences.Count;
         Debug.Log(totalInstructions);
@@ -85,7 +79,6 @@ public class DialogueManagerG : MonoBehaviour
 
         DisplayNextSentence();
     }
-
 
     public void DisplayNextSentence()
     {
@@ -104,8 +97,12 @@ public class DialogueManagerG : MonoBehaviour
         // store instruction and change array object to an array string.
         sentence = (string)sentences[instructionNumber];
 
+        Debug.Log(sentence);
+
         // Display the instruction
         dialogueText.text = sentence;
+
+        Debug.Log("after dialogue.text");
     }
 
     public void DisplayPreviousSentence()
@@ -138,9 +135,10 @@ public class DialogueManagerG : MonoBehaviour
             keywordAction.Invoke();
         }
     }
+
 /// <summary> ############################################################
-    /// ---------------------  Dictation Methods below  ----------------------
-    /// </summary> ###########################################################
+/// ---------------------  Dictation Methods below  ----------------------
+/// </summary> ###########################################################
     public void noteTaking()
     {
         if (!IsRunning)
@@ -209,10 +207,9 @@ public class DialogueManagerG : MonoBehaviour
     {
         if (completionCause != DictationCompletionCause.Complete)
         {
-            
+            Debug.Log("Dictation complete");
         }
-        Debug.Log("Dictation complete");
-
+        
         dictationDisplay.text = "";
 
         keywordRestart();
@@ -265,7 +262,6 @@ public class DialogueManagerG : MonoBehaviour
             }
 
             Debug.Log("Save to Geology Notes");
-                
     }
     
 }
