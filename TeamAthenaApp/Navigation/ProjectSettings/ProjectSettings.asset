@@ -555,7 +555,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 004b92012343d701
+  metroCertificateNotAfter: 00a15c278c52d701
   metroApplicationDescription: Template_3D
   wsaImages: {}
   metroTileShortName: 

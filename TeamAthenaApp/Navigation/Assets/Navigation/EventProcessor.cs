@@ -11,7 +11,7 @@ public class EventProcessor : MonoBehaviour
     public Text TextLatitude;
     public Text TextLongitude;
 
-    public Image Renderer; // Used to display map
+    //public Image Renderer; // Used to display map
     public String message = "Distance: ";
 
     // Camera transform
@@ -39,6 +39,11 @@ public class EventProcessor : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        changeTarget(2);
+    }
+
     void Update()
     {
         MoveQueuedEventsToExecuting();
@@ -56,12 +61,13 @@ public class EventProcessor : MonoBehaviour
                 UserLat = gpsData.Latitude;      // converts to float
                 UserLong = gpsData.Longitude;    // converts to float
 
-
+                /*
                 if (Renderer != null)
                 {   // Not used
                     var url = "http://maps.googleapis.com/maps/api/staticmap?center=" + gpsData.Latitude.ToString("F5") + "," + gpsData.Longitude.ToString("F5") + "&zoom=14&size=640x640&type=hybrid&sensor=true&markers=color:blue%7Clabel:S%7C" + gpsData.Latitude + "," + gpsData.Longitude;
                     StartCoroutine(GetGoogleMap(new WWW(url), Renderer));
                 }
+                */
             }
             catch (Exception e)
             {
@@ -78,13 +84,13 @@ public class EventProcessor : MonoBehaviour
 
         // Calculates direction to target
         var targetAngle = Math.Atan2(X_heading, Y_heading);
-        //var targetAngle = -Mathf.Atan2(xPosition, yPosition) * Mathf.Rad2Deg + direct.z;
+        var CompassAngle = -targetAngle * Mathf.Rad2Deg + direct.z;
 
         // Compass points toward target
-        transform.localEulerAngles = new Vector3(0, 0, Convert.ToSingle(targetAngle));
+        transform.localEulerAngles = new Vector3(0, 0, Convert.ToSingle(CompassAngle));
         // Calculates and Displays distance to target
         //int targetDistant = Mathf.RoundToInt((Mathf.Sqrt(Mathf.Pow(xPosition, 2) + Mathf.Pow(yPosition, 2))));
-        //distance.text = message + targetDistant.ToString();
+        distance.text = message + targetAngle.ToString();
 
     }
 
@@ -110,7 +116,7 @@ public class EventProcessor : MonoBehaviour
                 break;
         }
     }
-
+    /*
     IEnumerator GetGoogleMap(WWW www, Image renderer)
     { // Used to render map image to user
         yield return www;
@@ -127,6 +133,7 @@ public class EventProcessor : MonoBehaviour
         www.Dispose();
         www = null;
     }
+    */
 
     private void MoveQueuedEventsToExecuting()
     {
