@@ -1,1 +1,0 @@
-C:\Users\CADD_STUDENT\Navigationv2\App\GeneratedProjects\UWP\Unity.XR.WindowsMR\obj\ARM\Debug\ARM\Debug\Unity.XR.WindowsMR.csprojAssemblyReference.cache
