@@ -1,5 +1,5 @@
 ﻿/**
- * File:Main_butn,cs
+ * File:Main_butn.cs
  * Date:05/2020
  * By Richard and guan 
  * suitvital's code

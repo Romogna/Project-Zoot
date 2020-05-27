@@ -1,5 +1,5 @@
 /**
-SuitVital by Guan and Richard on 2020
+SuitVital by Guan and Richard on 2020/5/5
 DUC button script 
 */
 using System.Collections;

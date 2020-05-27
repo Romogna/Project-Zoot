@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/**
+ b1.c
+ Cited from API for camera
+ Guanwen,Richard
+ 5/10/2020
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using UnityEngine;
@@ -112,7 +119,7 @@ public class b1 : MonoBehaviour
         quadRenderer.material = new Material(Shader.Find("Unlit/Texture"));
 
         quad.transform.parent = this.transform;
-        quad.transform.localPosition = new Vector3(100.0f, 0.0f, 3.0f);
+        quad.transform.localPosition = new Vector3(250.0f, 300.0f, -3.0f);
 
         quadRenderer.material.SetTexture("_MainTex", targetTexture);
 
