@@ -35,10 +35,10 @@ public class repair : MonoBehaviour
             OpenS();
 
         });
-        keywords.Add("done", () =>
+        keywords.Add("complete", () =>
         {
             // Call the changeTarget function
-            Debug.Log("done");
+            Debug.Log("complete");
             OpenS();
 
         });
@@ -73,7 +73,7 @@ public class repair : MonoBehaviour
         }
         else
         {
-            btext.text = "Done";
+            btext.text = "Complete";
             pan.SetActive(true);
         }
     }

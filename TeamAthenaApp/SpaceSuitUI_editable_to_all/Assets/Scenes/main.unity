@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -434,9 +434,9 @@ GameObject:
   m_Component:
   - component: {fileID: 89306429}
   - component: {fileID: 89306433}
-  - component: {fileID: 89306432}
   - component: {fileID: 89306431}
   - component: {fileID: 89306430}
+  - component: {fileID: 89306432}
   m_Layer: 5
   m_Name: Photo ButtonG
   m_TagString: Untagged
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 89306428}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29ab9721018fdb4880d3612c9cf99c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2633111dcdc3578438f2bb3911c03eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &89306433
@@ -2960,7 +2960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Minimize
+  m_Text: Reduce
 --- !u!222 &540425198
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4883,7 +4883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &926170222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6315,7 +6315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Photo
+  m_Text: Cam
 --- !u!222 &1200247434
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9195,6 +9195,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69971b584145e54a8a6f32e3d53c249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+  m_NormalizedNavigationToScreenOffsetScalar: 500
+  m_TimeToPressOnTap: 0.3
 --- !u!114 &1868775015
 MonoBehaviour:
   m_ObjectHideFlags: 0

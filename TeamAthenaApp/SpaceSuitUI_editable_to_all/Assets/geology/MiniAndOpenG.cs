@@ -1,6 +1,6 @@
 ﻿/***
- Program to Toggle the Repair Application from Minimized/ Open
- Date May 15th 2020
+ Program to Toggle the Repair Application from Reduce/ Reopen
+ Date May 15th 2020/ Updated on May 27th 2020
  Author Kory Menke
  Adds the keywords open and mini, and functions that tell what those keywords do, or with the press of the button
  */
@@ -34,17 +34,17 @@ public class MiniAndOpenG : MonoBehaviour
     {
 
         // Global Voice Command
-        keywords.Add("Minimize", () =>
+        keywords.Add("Reduce", () =>
         {
             // Call the changeTarget function
-            Debug.Log("Minimize");
+            Debug.Log("Reduce");
             OpenS();
 
         });
-        keywords.Add("Open", () =>
+        keywords.Add("Reopen", () =>
         {
             // Call the changeTarget function
-            Debug.Log("Open");
+            Debug.Log("Reopen");
             OpenS();
 
         });
@@ -74,7 +74,7 @@ public class MiniAndOpenG : MonoBehaviour
     {
         if (Begin.activeSelf)
         {
-            btext.text = "Open";
+            btext.text = "Reopen";
             Begin.SetActive(false);
             Previous.SetActive(false);
             Photo.SetActive(false);
@@ -86,7 +86,7 @@ public class MiniAndOpenG : MonoBehaviour
         }
         else
         {
-            btext.text = "Minimize";
+            btext.text = "Reduce";
             Begin.SetActive(true);
             Previous.SetActive(true);
             Photo.SetActive(true);
