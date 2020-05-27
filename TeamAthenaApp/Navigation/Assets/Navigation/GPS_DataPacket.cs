@@ -6,7 +6,7 @@ public class GPS_DataPacket : MonoBehaviour
     public double Latitude;
     public double Longitude;
     public float Heading;
-    public float Speed;
+    public float Lumens;
 
     public static GPS_DataPacket ParseDataPacket(byte[] data)
     {
@@ -14,7 +14,8 @@ public class GPS_DataPacket : MonoBehaviour
         gps_Data.Latitude = BitConverter.ToDouble(data, 0);
         gps_Data.Longitude = BitConverter.ToDouble(data, 8);
         gps_Data.Heading = BitConverter.ToSingle(data, 16);
-        gps_Data.Speed = BitConverter.ToSingle(data, 20);
+        //gps_Data.Speed = BitConverter.ToSingle(data, 20);
+        gps_Data.Lumens = BitConverter.ToSingle(data, 20);
         return gps_Data;
     }
 
@@ -37,6 +38,6 @@ public class GPS_DataPacket : MonoBehaviour
         {
             lng = string.Format("{0:0.00} AfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfA'A?W", -Longitude);
         }
-        return string.Format("Latitude: {0}, Longitude: {1}, Heading: {2:0.00}AfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfA'A?, Speed: {3:0.00} knots", lat, lng, Heading, Speed);
+        return string.Format("Latitude: {0}, Longitude: {1}, Heading: {2:0.00}AfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfAfA'A?, Speed: {3:0.00} knots", lat, lng, Heading, Lumens);
     }
 }

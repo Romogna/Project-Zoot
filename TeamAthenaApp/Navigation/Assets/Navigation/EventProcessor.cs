@@ -10,6 +10,8 @@ public class EventProcessor : MonoBehaviour
     public Text TextTime;
     public Text TextLatitude;
     public Text TextLongitude;
+    public Text TextLumens;
+    public Text GpsHeading;
 
     //public Image Renderer; // Used to display map
     public String message = "Distance: ";
@@ -25,7 +27,8 @@ public class EventProcessor : MonoBehaviour
     double TargetLong;
     double X_heading;
     double Y_heading;
-    public Text distance;
+
+    public Text TargetHeading;
 
     private System.Object _queueLock = new System.Object();
     List<byte[]> _queuedData = new List<byte[]>();
@@ -57,6 +60,8 @@ public class EventProcessor : MonoBehaviour
                 TextTime.text       = "     Time: " + DateTime.Now.ToString("t");
                 TextLatitude.text   = " Latitude: " + gpsData.Latitude.ToString();
                 TextLongitude.text  = "Longitude: " + gpsData.Longitude.ToString();
+                TextLumens.text     = "   Lumens: " + gpsData.Lumens.ToString();
+                GpsHeading.text    = "  Heading: " + gpsData.Heading.ToString();
 
                 UserLat = gpsData.Latitude;      // converts to float
                 UserLong = gpsData.Longitude;    // converts to float
@@ -90,7 +95,7 @@ public class EventProcessor : MonoBehaviour
         transform.localEulerAngles = new Vector3(0, 0, Convert.ToSingle(CompassAngle));
         // Calculates and Displays distance to target
         //int targetDistant = Mathf.RoundToInt((Mathf.Sqrt(Mathf.Pow(xPosition, 2) + Mathf.Pow(yPosition, 2))));
-        distance.text = message + targetAngle.ToString();
+        TargetHeading.text = "Target: " + targetAngle.ToString();
 
     }
 
