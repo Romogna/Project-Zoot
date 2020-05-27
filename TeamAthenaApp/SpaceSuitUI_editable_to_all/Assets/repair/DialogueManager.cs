@@ -49,12 +49,12 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         //Create keywords for keyword recognizer
-        keywords.Add("open geology", () =>
+        keywords.Add("start geology", () =>
         {
             tireAppRunning = false;
             TriggerGeologyInstructions();
         });
-        keywords.Add("tire repair", () =>
+        keywords.Add("start repair", () =>
         {
             tireAppRunning = true;
             TriggerTireInstructions();
