@@ -33,10 +33,10 @@ public class b1g : MonoBehaviour
     {
 
         // Global Voice Command
-        keywords.Add("photo", () =>
+        keywords.Add("pic", () =>
         {
             // Call the changeTarget function
-            Debug.Log("photo");
+            Debug.Log("pic");
             OpenCam();
 
         });
