@@ -100,7 +100,7 @@ public class b1 : MonoBehaviour
     {
         capturedImageCount++;
         Debug.Log(string.Format("Taking Picture ({0}/{1})...", capturedImageCount, maxphoto));
-        string filename = string.Format(@"RepairImage{0}.jpg", capturedImageCount);
+        string filename = string.Format(@"CapturedImage{0}.jpg", capturedImageCount);
         string fPath = System.IO.Path.Combine(Application.persistentDataPath, filename);
         Debug.Log(fPath);
         photoCaptureObject.TakePhotoAsync(fPath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
