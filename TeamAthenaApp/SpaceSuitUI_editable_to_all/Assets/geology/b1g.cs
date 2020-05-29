@@ -1,7 +1,7 @@
 ﻿/**
- b1.c
+ b1g.c
  Cited from API for camera
- Guanwen,Richard: Copied b1 from geology
+ Guanwen,Richard: Copied b1.c from geology
  5/27/20
  */
 
@@ -26,6 +26,7 @@ public class b1g : MonoBehaviour
     int capturedImageCount = 0;
     int maxphoto = 50;
     GameObject quad = null;
+    public Text t;
     // Use this for initialization
     KeywordRecognizer keywordRecognizer = null;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
@@ -125,6 +126,7 @@ public class b1g : MonoBehaviour
 
         // Deactivate our camera
         photoCaptureObject.StopPhotoModeAsync(OnStoppedPhotoMode);
+        t.text = " ";
         //photoCaptureFrame.Dispose();
     }
 
@@ -141,10 +143,10 @@ public class b1g : MonoBehaviour
 
     public void OpenCam()
     {
-
+        t.text = "Taking picture now...";
         Start1();
         //photoCaptureObject = null;
-
+       
     }
 
 } // End class b1g

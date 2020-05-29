@@ -26,6 +26,7 @@ public class b1 : MonoBehaviour
     int capturedImageCount = 0;
     int maxphoto = 50;
     GameObject quad = null;
+    public Text t;
     // Use this for initialization
     KeywordRecognizer keywordRecognizer = null;
     Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
@@ -126,6 +127,7 @@ public class b1 : MonoBehaviour
         // Deactivate our camera
         photoCaptureObject.StopPhotoModeAsync(OnStoppedPhotoMode);
         //photoCaptureFrame.Dispose();
+        t.text = " ";
     }
 
     public void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
@@ -141,10 +143,10 @@ public class b1 : MonoBehaviour
 
     public void OpenCam()
     {
-
+        t.text = "Taking picture now...";
         Start1();
         //photoCaptureObject = null;
-
+       
     }
 
 } // End class b1
