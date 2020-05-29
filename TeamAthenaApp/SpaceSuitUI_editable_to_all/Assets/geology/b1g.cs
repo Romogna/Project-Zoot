@@ -100,7 +100,7 @@ public class b1g : MonoBehaviour
     {
         capturedImageCount++;
         Debug.Log(string.Format("Taking Picture ({0}/{1})...", capturedImageCount, maxphoto));
-        string filename = string.Format(@"CapturedImage{0}.jpg", capturedImageCount);
+        string filename = string.Format(@"GeologyImage{0}.jpg", capturedImageCount);
         string fPath = System.IO.Path.Combine(Application.persistentDataPath, filename);
         Debug.Log(fPath);
         photoCaptureObject.TakePhotoAsync(fPath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
@@ -119,7 +119,7 @@ public class b1g : MonoBehaviour
         quadRenderer.material = new Material(Shader.Find("Unlit/Texture"));
 
         quad.transform.parent = this.transform;
-        quad.transform.localPosition = new Vector3(250.0f, 300.0f, -3.0f);
+        quad.transform.localPosition = new Vector3(500.0f, 400.0f, -3.0f);
 
         quadRenderer.material.SetTexture("_MainTex", targetTexture);
 

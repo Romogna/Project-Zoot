@@ -363,12 +363,15 @@ public class DialogueManager : MonoBehaviour
         this.dictationIndicatorText.text = "Dictation OFF";
     }
 
+
     public void CreateText()
     {
+        string set = Application.persistentDataPath;
         if (tireAppRunning)
         {
-            path = Application.dataPath + "/00_Tire_Repair_Notes.txt";
 
+            path = set + "/00_Tire_Repair_Notes.txt";
+           
             if (!File.Exists(path))
             {
                 File.WriteAllText(path, "Tire_repair_notes \n\n");
@@ -379,7 +382,8 @@ public class DialogueManager : MonoBehaviour
 
         if (!tireAppRunning)
         {
-            path = Application.dataPath + "/00_Geology_Notes.txt";
+
+            path = set + "/00_Geology_Notes.txt";
 
             if (!File.Exists(path))
             {
