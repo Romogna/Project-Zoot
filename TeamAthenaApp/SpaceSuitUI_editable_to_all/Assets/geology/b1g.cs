@@ -120,7 +120,7 @@ public class b1g : MonoBehaviour
         quadRenderer.material = new Material(Shader.Find("Unlit/Texture"));
 
         quad.transform.parent = this.transform;
-        quad.transform.localPosition = new Vector3(500.0f, 400.0f, -3.0f);
+        quad.transform.localPosition = new Vector3(-90.0f, 350.0f, -3.0f);
 
         quadRenderer.material.SetTexture("_MainTex", targetTexture);
 
