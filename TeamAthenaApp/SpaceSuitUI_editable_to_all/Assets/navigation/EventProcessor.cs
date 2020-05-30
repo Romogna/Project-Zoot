@@ -68,7 +68,7 @@ public class EventProcessor : MonoBehaviour
         {
             changeTarget(2);
         });
-        keywords.Add("Target Sample", () =>
+        keywords.Add("Target Sampling Site", () =>
         {
             changeTarget(3);
         });
@@ -84,7 +84,7 @@ public class EventProcessor : MonoBehaviour
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
 
-        changeTarget(1);
+        changeTarget(2);
     }
 
     void Update()
