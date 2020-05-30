@@ -31,6 +31,12 @@ public class EventProcessor : MonoBehaviour
     double X_heading;
     double Y_heading;
 
+    // Toggle Canvas
+    public GameObject NaviMenu;
+
+    // Toggle Compass
+    public GameObject SpriteArrow;
+    public GameObject HereSign;
     public Text TargetHeading;
 
     // Voice
@@ -66,6 +72,10 @@ public class EventProcessor : MonoBehaviour
         {
             changeTarget(3);
         });
+        keywords.Add("Navigation", () =>
+        {
+            togglePanel();
+        });
 
         // Tell the KeywordRecognizer about our keywords.
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
@@ -74,7 +84,7 @@ public class EventProcessor : MonoBehaviour
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
 
-        changeTarget(2);
+        changeTarget(1);
     }
 
     void Update()
@@ -106,7 +116,7 @@ public class EventProcessor : MonoBehaviour
             }
             catch (Exception e)
             {
-                TextLatitude.text = "Error: " + e.Message;
+                TextLumens.text = "Error: " + e.Message;
             }
         }
 
@@ -122,36 +132,113 @@ public class EventProcessor : MonoBehaviour
         var targetAngle = Math.Atan2(X_heading, Y_heading);
         var CompassAngle = -targetAngle * Mathf.Rad2Deg + direct.z;
 
+        // Calculating distance to target
+        var lat = (TargetLat - UserLat) * (Math.PI / 180);
+        var lng = (TargetLong - UserLong) * (Math.PI / 180);
+
+        var h1 = Math.Sin(lat / 2) * Math.Sin(lat / 2) +
+                      Math.Cos(UserLat * (Math.PI / 180)) * Math.Cos(TargetLat * (Math.PI / 180)) *
+                      Math.Sin(lng / 2) * Math.Sin(lng / 2);
+
+        //var h2 = 2 * Math.Asin(Math.Min(1, Math.Sqrt(h1)));
+        var h2 = 2 * Math.Atan2(Math.Sqrt(h1), Math.Sqrt(1 - h1));
+
+        var distanceToTarget = Convert.ToInt32((5201 * h2)*1000);   // (5201*h2) = Kilometers in rio rancho
+        //var distanceToTarget = Convert.ToInt32((6371 * h2)*1000); // Global average altitude
+
         // Compass points toward target
         transform.localEulerAngles = new Vector3(0, 0, Convert.ToSingle(CompassAngle));
         // Calculates and Displays distance to target
         //int targetDistant = Mathf.RoundToInt((Mathf.Sqrt(Mathf.Pow(xPosition, 2) + Mathf.Pow(yPosition, 2))));
-        TargetHeading.text = message;
+        TargetHeading.text = message + distanceToTarget.ToString();
 
+        if (distanceToTarget <= 5)
+        {
+            toggleArrow(2);
+        }
+        else if (distanceToTarget >= 10)
+        {
+            toggleArrow(1);
+        }    
     }
+
+    public void toggleArrow(int option)
+    {
+
+        switch(option)
+        {
+            case 1:
+                HereSign.SetActive(false);
+                
+                TargetHeading.enabled = true;
+                SpriteArrow.SetActive(true);
+                
+                break;
+            case 2:
+                HereSign.SetActive(true);
+                
+                TargetHeading.enabled = false;
+                SpriteArrow.SetActive(false);
+           
+                break;
+        }
+    }
+
+    public void togglePanel()
+    {
+        if (NaviMenu != null)
+        {
+            bool isActive = NaviMenu.activeSelf;
+
+            NaviMenu.SetActive(!isActive);
+        }
+    }
+
+    /*
+    public double HaversineDistance()
+    {
+
+        var lat = (TargetLat - UserLat) * (Math.PI / 180);
+        var lng = (TargetLong - UserLong) * (Math.PI/180);
+
+        var h1 = Math.Sin(lat / 2) * Math.Sin(lat / 2) +
+                      Math.Cos(UserLat *(Math.PI/180)) * Math.Cos(TargetLat * (Math.PI / 180)) *
+                      Math.Sin(lng / 2) * Math.Sin(lng / 2);
+
+        //var h2 = 2 * Math.Asin(Math.Min(1, Math.Sqrt(h1)));
+        var h2 = 2 * Math.Atan2(Math.Sqrt(h1),Math.Sqrt(1-h1));
+        return 6371 * h2;
+    }
+    */
 
     public void changeTarget(int target)
     {   // Function to switch the position of the targets
         switch (target)
         {
-            // TODO: Change the targets to correct coordinates
             case 1: // Rover
                 message = "Rover: ";
-                TargetLat  =   35.2938230;
-                TargetLong = -106.7155604;
+                TargetLat  =   35.29389200;
+                TargetLong = -106.71549180;
+                //TargetLat = 35.2938230;
+                //TargetLong = -106.7155604;
                 break;
             case 2: // Lander
                 message = "Lander: ";
-                TargetLat  =   35.29401300;
-                TargetLong = -106.71558050;
+                TargetLat  =   35.29399750;
+                TargetLong = -106.71561400;
+                //TargetLat  =   35.29401300;
+                //TargetLong = -106.71558050;
                 break;
             case 3: // Sampling Site
-                message = "Sampling Site: ";
-                TargetLat  =   35.29356700;
-                TargetLong = -106.71688800;
+                message = "Sampling: ";
+                TargetLat  =   35.29353400;
+                TargetLong = -106.71694150;
+                //TargetLat  =   35.29356700;
+                //TargetLong = -106.71688800;
                 break;
         }
     }
+
     /*
     IEnumerator GetGoogleMap(WWW www, Image renderer)
     { // Used to render map image to user
@@ -170,6 +257,7 @@ public class EventProcessor : MonoBehaviour
         www = null;
     }
     */
+
     // Voice commands function
     private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {

@@ -1,4 +1,0 @@
-PlaneFinding.dll
-AudioPluginMsHRTF.dll
-MicStreamSelector.dll
-GpuTiming.dll
