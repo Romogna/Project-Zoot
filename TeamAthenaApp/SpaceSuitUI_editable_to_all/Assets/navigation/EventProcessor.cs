@@ -59,16 +59,15 @@ public class EventProcessor : MonoBehaviour
     {
 
         // Global Voice Command
-        keywords.Add("Target Rover", () =>
+        keywords.Add("Rover", () =>
         {
-            // Call the changeTarget function
             changeTarget(1);
         });
-        keywords.Add("Target Lander", () =>
+        keywords.Add("Home", () =>
         {
             changeTarget(2);
         });
-        keywords.Add("Target Sampling Site", () =>
+        keywords.Add("Sampling Site", () =>
         {
             changeTarget(3);
         });
@@ -84,7 +83,8 @@ public class EventProcessor : MonoBehaviour
         keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
         keywordRecognizer.Start();
 
-        changeTarget(2);
+
+        changeTarget(1);
     }
 
     void Update()
@@ -92,10 +92,12 @@ public class EventProcessor : MonoBehaviour
         MoveQueuedEventsToExecuting();
         while (_processingData.Count > 0)
         {
-            var byteData = _processingData[0];
-            _processingData.RemoveAt(0);
+
             try
             {
+                var byteData = _processingData[0];
+                _processingData.RemoveAt(0);
+
                 var gpsData = GPS_DataPacket.ParseDataPacket(byteData);
                 TextTime.text       = "     Time: " + DateTime.Now.ToString("t");
                 TextLatitude.text   = " Latitude: " + gpsData.Latitude.ToString();
@@ -146,20 +148,22 @@ public class EventProcessor : MonoBehaviour
         var distanceToTarget = Convert.ToInt32((5201 * h2)*1000);   // (5201*h2) = Kilometers in rio rancho
         //var distanceToTarget = Convert.ToInt32((6371 * h2)*1000); // Global average altitude
 
+        if (distanceToTarget <= 5)
+        {
+            toggleArrow(2);
+        }
+        else if (distanceToTarget > 7)
+        {
+            toggleArrow(1);
+        }
+
         // Compass points toward target
         transform.localEulerAngles = new Vector3(0, 0, Convert.ToSingle(CompassAngle));
         // Calculates and Displays distance to target
         //int targetDistant = Mathf.RoundToInt((Mathf.Sqrt(Mathf.Pow(xPosition, 2) + Mathf.Pow(yPosition, 2))));
         TargetHeading.text = message + distanceToTarget.ToString();
 
-        if (distanceToTarget <= 5)
-        {
-            toggleArrow(2);
-        }
-        else if (distanceToTarget >= 10)
-        {
-            toggleArrow(1);
-        }    
+   
     }
 
     public void toggleArrow(int option)
@@ -171,14 +175,14 @@ public class EventProcessor : MonoBehaviour
                 HereSign.SetActive(false);
                 
                 TargetHeading.enabled = true;
-                SpriteArrow.SetActive(true);
+                
                 
                 break;
             case 2:
                 HereSign.SetActive(true);
                 
                 TargetHeading.enabled = false;
-                SpriteArrow.SetActive(false);
+                
            
                 break;
         }

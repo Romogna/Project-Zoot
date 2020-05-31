@@ -123,7 +123,7 @@ public class Main_butn : MonoBehaviour
         {
             // Call the changeTarget function
             Debug.Log("Vital");
-            Display();
+            Change();
 
         });
 
